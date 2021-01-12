@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: dataNumber; src: url("../fonts/data_Number.ttf");
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+body {
+	font-size: 100%;
+    overflow: auto;
+    background-image: url(../img/bg.jpg); 	
+}
+a{text-decoration: none}
+.clear{
+    clear: both;
+}
+
+.page_header{
+	width : 100%;
+	height : 60px;
+	background : url(../img/title.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page_title {
+	width : 100%;
+	height: 100%;
+	text-align : center;
+	font-size : 2.5em;
+	line-height : 60px;
+	color : #FFF;
+}
+
+.data_body{
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	position: absolute;
+}
+.nav-top {
+	width : 100%;
+	height : 40px;
+}
+.nav-top ul li{font-size: 1em;color: #fff;opacity: 0.8;padding-top:8px;padding-left:10px;padding-right:10px;padding-bottom:5px;cursor: pointer;text-shadow:0 6px 8px #00225b }
+.nav-top ul .nav-left{margin-left: 3%}
+.nav-top ul .nav-right{margin-right: 3%}
+.nav-top ul li:hover{opacity: 1}
+.nav-active {
+	border-bottom: 4px solid #4b8df8;
+	box-sizing : border-box;
+}
+.nav-left{
+	float : left;
+}
+.nav-right{
+	float : right;
+}
+
+.page-tabs{
+	width : 100%;
+	height : 100%;
+	position : absolute;
+}
+
+.inner-page{
+	height : 100%;
+}
+
+.page-col{
+	height : 100%;
+	margin-left : 0.3%;
+	float:left;
+}
+
+.thin-border{
+	width : 100%;
+	height : 100%;
+	border-radius : 10px;
+	border:1px #0174f5 solid;
+	padding : 1px;
+	box-sizing : border-box;
+}
+.thick-border{
+	width : 100%;
+	height : 100%;
+	border-radius : 10px;
+	border:2px solid #016ae0;
+	box-sizing : border-box;
+}
+
+.chart-title-box{
+	width : 100%;
+	top : 0px;
+	left : 0px;
+	background-color : rgba(17,25,69,0.1);
+	border-radius:11px 11px 0px 0px;
+	position : relative;
+}
+.chart-title-inner-box{
+	width : 100%;
+	top : -4px;
+	position : absolute;
+}
+.char-title{
+	width:358px;
+	background-image: url("../img/first_title.png");
+	background-repeat:no-repeat;
+	margin : auto;
+	height : 28px;
+	text-align : center;
+	color : white;
+	font-size : 14px;
+	font-family:"Microsoft YaHei";
+	font-weight:bold;
+}
+.data-box {
+	width:100%;
+	padding-left: 4%;
+	margin-top: 1%;
+	margin-bottom: 8px;	
+}
+.main-label{
+	font-size: 16px;
+	color: white;		
+	font-weight:bold;
+}
+.main-number{
+	display: block;
+	margin-left: 1px;
+	color: white;
+	text-align: center;
+	font-size: 36px;
+	font-family: dataNumber;
+}
+.data-label{
+	font-size: 14px;
+	color: white;		
+}
+.data-number{
+font-family: dataNumber;
+font-size: 24px;
+color: #10a4db;
+}
+
+.map {
+	width : 90%;
+	height : 90%;
+	margin : auto;
+}
