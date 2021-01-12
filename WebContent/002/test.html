@@ -130,20 +130,38 @@
 	<script src="js/echarts.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-table.js"></script>
-	<script src="map/js/province/yunnan.js"></script>
+	<script src="map/530100.js"></script>	
 	<script src="js/base.js"></script>
 	<script type="text/javascript">
+	echarts.registerMap("昆明", kunming);
 		var myMap = echarts.init(document.getElementById("mainMap"));
 		myMap.setOption(
 		{
 			geo:{
-				map: "云南",
+				map: "昆明",
 				label: {
 					emphasis: {
 						show: true,
 						color:'#fff'
+					},
+					normal:{
+						show:true,
+						color:'#fff'
 					}
-				}
+				},
+				roam: true,
+				itemStyle: {
+					normal: {
+						// 地图省份填充色
+						areaColor: 'rgba(20, 41, 87, 0.6)',
+						borderColor: '#0692a4',
+						borderWidth: 1,
+						},
+            emphasis: {
+                areaColor: '#0b1c2d'
+            }
+        }
+
 			}
 		});
 		
