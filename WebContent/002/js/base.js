@@ -20,22 +20,17 @@
  $('.nav-top ul li').each(function(index){
  	$(this).click(function(){
  		$(this).addClass("nav-active").siblings().removeClass("nav-active");
- 		$(".page-tabs .inner-page").eq(index).fadeIn().siblings("div").stop().hide();
+ 		$(".page-tabs .inner-page").eq(index).fadeIn().siblings().stop().hide();
  		selectPage(index);
  	});
  });
   
  function overview() {
- 	var mainMap = echarts.init($("#mainMap"));
- 	console.log(mainMap);
  }
  function branchOverview(){
- 	alert("branchOverview");
  }
  function compare(){
- 	alert("compare");
  }
  function prediction(){
- 	alert("prediction");
  }
  

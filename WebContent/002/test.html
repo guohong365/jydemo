@@ -12,7 +12,7 @@
 	<div class="page_header">
 		<div class="page_title">昆明市交运集团大数据分析系统</div>
 	</div>
-	<div class="data_body">
+	<div class="data_body" id='data-body'>
 		<div class="nav-top">
 			<ul style="height: 30px; margin-bottom: 0px;">
 				<li class="nav-left nav-active">经营情况总览</li>
@@ -21,129 +21,160 @@
 				<li class="nav-right">对比分析</li>
 			</ul>
 		</div>
-		<div class="page-tabs">
+		<div class="page-tabs" id="page-tabs">
 			<!-- 集团经营状况总览 -->
-			<div class="inner-page" >
-				<div class="page-col" style="width: 25%;">
-					<div class="thin-border" style="margin-top: 10px !important; height: 50%; position: relative;">
-						<div class="thick-border">
-							<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">收入</div>
+			<div class="inner-page">
+				<div class="page-col" style="width: 25%; padding-left: 10px; padding-right: 5px;">
+					<div style="padding-top: 10px; height: 50%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">收入</div>
+									</div>
 								</div>
+								<div class="data-box">
+									<div class="main-label">当日收入：</div>
+									<div class="main-number">3254534</div>
+								</div>
+								<div class="data-box">
+									<span class="data-label">当月收入：</span> <span class="data-number">231442</span>
+								</div>
+								<div class="data-box">
+									<span class="data-label">当年收入：</span> <span class="data-number">231442</span>
+								</div>
+								<div id="incomeSelector" class="chart-selector">
+									<div class="data-label">
+										<div>年</div>
+										<div>月</div>
+										<div>日</div>
+									</div>
+								</div>
+								<div id="incomePie" class="chart-float"></div>
 							</div>
-							<div class="data-box">
-								<div class="main-label">当日收入：</div>
-								<div class="main-number">3254534</div>
-							</div>
-							<div class="data-box">
-								<span class="data-label">当月收入：</span> <span class="data-number">231442</span>
-							</div>
-							<div class="data-box">
-								<span class="data-label">当年收入：</span> <span class="data-number">231442</span>
-							</div>
-							<div class="chart-float"></div>
 						</div>
 					</div>
-					<div class="thin-border" style="margin-top: 10px !important; height: 50%; position: relative;">
-						<div class="thick-border">
-							<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">乘车人次</div>
+					<div style="padding-top: 10px; height: 50%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">乘车人次</div>
+									</div>
 								</div>
-							</div>
-							<div class="data-box">
-								<div class="main-label">当日人次：</div>
-								<div class="main-number">3254534</div>
-							</div>
-							<div class="data-box">
-								<span class="data-label">当月人次：</span> <span class="data-number">231442</span>
-							</div>
-							<div class="data-box">
-								<span class="data-label">当年人次：</span> <span class="data-number">231442</span>
-							</div>
-							<div class="chart-float"></div>
-						</div>
-					</div>
-				</div>
-				<div class="page-col" style="width: 48.8%;">
-					<div class="thin-border" style="margin-top: 10px !important; height: 70%; position: relative;">
-						<div class="thick-border">
-							<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">昆明市地图</div>
+								<div class="data-box">
+									<div class="main-label">当日人次：</div>
+									<div class="main-number">3254534</div>
 								</div>
-							</div>
-							<div class="map" id="mainMap"></div>
-						</div>
-					</div>
-					<div class="thin-border" style="margin-top: 10px !important; height: 30%; position: relative;">
-						<div class="thick-border">
-							<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">历史数据</div>
+								<div class="data-box">
+									<span class="data-label">当月人次：</span> <span class="data-number">231442</span>
 								</div>
+								<div class="data-box">
+									<span class="data-label">当年人次：</span> <span class="data-number">231442</span>
+								</div>
+								<div class="chart-float"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="page-col" style="width: 25%;">
-					<div class="thin-border" style="margin-top: 10px !important; height: 30%; position: relative;">
-						<div class="thick-border">
-						<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">历史数据</div>
+				<div class="page-col" style="width: 50%; padding-left: 5px; padding-right: 5px;">
+					<div style="padding-top: 10px; height: 70%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">昆明市地图</div>
+									</div>
+								</div>
+								<div class="map" id="mainMap"></div>
+							</div>
+						</div>
+					</div>
+					<div style="padding-top: 10px; height: 30%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">历史数据</div>
+									</div>
+								</div>
+								<div class="chart-box" id="historyChart">
+									<div class="chart-selector data-label">
+										<div>年</div>
+										<div>月</div>
+										<div class="active">日</div>
+									</div>
+									<div class="chart"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="thin-border" style="margin-top: 10px !important; height: 35%; position: relative;">
-						<div class="thick-border">
-						<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">历史数据</div>
+				</div>
+				<div class="page-col" style="width: 25%; padding-left: 5px; padding-right: 10px;">
+					<div style="padding-top: 10px; height: 30%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">收入排名</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="thin-border" style="margin-top: 10px !important; height: 33%; position: relative;">
-						<div class="thick-border">
-						<div class=“char-title-box”>
-								<div class="char-title-inner-box">
-									<div class="char-title">历史数据</div>
+					<div style="padding-top: 10px; height: 35%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">人次排名</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="padding-top: 10px; height: 35%;">
+						<div class="thin-border">
+							<div class="thick-border">
+								<div class=“char-title-box”>
+									<div class="char-title-inner-box">
+										<div class="char-title">会员排名</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- 各地经营状况 -->
+			<div class="inner-page" style="display: none;"></div>
+			<!-- 各地经营对比 -->
+			<div class="inner-page" style="display: none;"></div>
+			<!-- 经营预测 -->
+			<div class="inner-page" style="display: none;"></div>
 		</div>
-	</div>
-	<!-- 各地经营状况 -->
-	<div class="inner-page" style="display: none;"></div>
-	<!-- 各地经营对比 -->
-	<div class="inner-page" style="display: none;"></div>
-	<!-- 经营预测 -->
-	<div class="inner-page" style="display: none;"></div>
-	</div>
 	</div>
 	<script src="js/echarts.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-table.js"></script>
 	<script src="map/530100.js"></script>	
 	<script src="js/base.js"></script>
+	<script src="js/charts/overview.js"></script>
 	<script type="text/javascript">
-	echarts.registerMap("昆明", kunming);
-		var myMap = echarts.init(document.getElementById("mainMap"));
+    $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");
+    $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() -41) + "px");
+	window.addEventListener('resize', function(){
+		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");
+	    $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() -41) + "px");
+	});
+/*
+	var myMap = echarts.init(document.getElementById("mainMap"));
 		myMap.setOption(
 		{
 			geo:{
 				map: "昆明",
-				label: {
-					emphasis: {
-						show: true,
-						color:'#fff'
-					},
+				label: {					
 					normal:{
 						show:true,
 						color:'#fff'
@@ -164,7 +195,10 @@
 
 			}
 		});
-		
+		window.addEventListener('resize', function(){
+			myMap.resize();
+		});		
+		*/
 	</script>
 </body>
 </html>

@@ -6,8 +6,7 @@ $(function(){
     $(".index_nav ul li").each(function(index){
         $(this).click(function(){
             $(this).addClass("nav_active").siblings().removeClass("nav_active");
-            $(".index_tabs .inner").eq(index).fadeIn().siblings("div").stop().hide();
-            
+            $(".index_tabs .inner").eq(index).fadeIn().siblings("div").stop().hide();            
             if(index==1){
                 yingXiao();
             }else if(index==2){

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<title>昆明市交运集团大数据分析系统</title></title>
+<style type="text/css">
+@font-face {
+	font-family: dataNumber;
+	src: url(fonts/data_Number.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+	html{
+	width:100%;
+	height:100%;
+}
+body {
+	width : 100%;
+	height:100%;
+	font-size: 100%;
+    overflow: auto;
+    background-image: url(img/bg.jpg); 	
+}
+.header{
+	width:100%;
+	height:60px;
+	border: 1px #FFF;
+}
+.data-body{
+	width: 100%;
+	height: 100%;
+	border: 1px #0FF solid;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+    <div class="header">
+    </div>
+    <div class="data-body" id="data-body">
+    </div>
+    <script type="text/javascript">    
+    $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");	
+    	window.addEventListener('resize', function(){
+    		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");	
+    	});
+    </script>
+</body>
+</html>
