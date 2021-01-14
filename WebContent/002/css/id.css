@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#mainPageType{
+	width: 200px;
+	display: block;
+	height: 26px;
+	background-color: transparent;
+	color: #0b7ff3;
+	border: #0b7ff3 2px solid;
+	position: absolute;
+	right: 2px;
+	border-radius: 5px;
+	margin-top: 2px;
+}

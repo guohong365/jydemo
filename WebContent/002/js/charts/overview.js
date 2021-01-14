@@ -2,8 +2,7 @@
  * 
  */
  function setupHistoryChart(){
- 		console.log("to init history chart");
-  		var historyChart = echarts.init($("#historyChart .chart")[0]);
+  		var historyChart = echarts.init(document.querySelector("#historyChart .chart"));
   		var data=[
   			[ 24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120  ],
   			[40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
@@ -41,7 +40,7 @@
  	setupHistoryChart();
  	
  function setupIncomePie(){
- 		var incomePie=echarts.init($("#incomePie")[0]);
+ 		var incomePie=echarts.init(document.querySelector("#incomePie"));
  		var data =[
  			[
  				{name:"五华", value: 80},
@@ -121,8 +120,74 @@
   }  
   setupIncomePie();
   
+  function setupTable(){
+  	var chart = echarts.init(document.querySelector("#timesPie"));
+  	 		var data =[
+ 			[
+ 				{name:"五华", value: 80},
+ 				{name:"盘龙", value: 90},
+ 				{name:"官渡", value: 110},
+ 				{name:"呈贡", value: 50},
+ 				{name:"西山", value: 65},
+ 				{name:"安宁", value: 30},
+ 				{name:"宜良", value: 20},
+ 				{name:"石林", value: 40},
+ 				{name:"晋宁", value: 10},
+ 				{name:"嵩明", value: 20},
+ 				{name:"富民", value: 20},
+ 				{name:"寻甸", value: 10},
+ 				{name:"东川", value: 30}	
+ 			],
+ 		 	[
+ 				{name:"五华", value: 80},
+ 				{name:"盘龙", value: 90},
+ 				{name:"官渡", value: 110},
+ 				{name:"呈贡", value: 50},
+ 				{name:"西山", value: 65},
+ 				{name:"安宁", value: 30},
+ 				{name:"宜良", value: 20},
+ 				{name:"石林", value: 40},
+ 				{name:"晋宁", value: 10},
+ 				{name:"嵩明", value: 20},
+ 				{name:"富民", value: 20},
+ 				{name:"寻甸", value: 10},
+ 				{name:"东川", value: 30}	
+ 			],
+ 			[
+ 				{name:"五华", value: 80},
+ 				{name:"盘龙", value: 90},
+ 				{name:"官渡", value: 110},
+ 				{name:"呈贡", value: 50},
+ 				{name:"西山", value: 65},
+ 				{name:"安宁", value: 30},
+ 				{name:"宜良", value: 20},
+ 				{name:"石林", value: 40},
+ 				{name:"晋宁", value: 10},
+ 				{name:"嵩明", value: 20},
+ 				{name:"富民", value: 20},
+ 				{name:"寻甸", value: 10},
+ 				{name:"东川", value: 30}	
+ 			]
+ 		];
+ 		var option = {
+        	tooltip: {  trigger: 'item',   formatter: '{b}<br/> {c} ({d}%)'   },        
+        	series:{                
+                type: 'pie',
+                radius: ["10", "70"],
+                center: ['50%', '40%'],
+                roseType: 'radius',
+                data: data[0],
+            }
+    	};
+    	chart.setOption(option);
+ 		window.addEventListener('resize',function(){
+ 			incomePie.resize();
+ 		});
+  }
+  setupTimesPie();
+  
   function setupMap(){
-  		var mainMap = echarts.init($("#mainMap")[0]);
+  		var mainMap = echarts.init(document.querySelector("#mainMap"));
   		var data =  [
  					{name:"五华", value: 80},
  					{name:"盘龙", value: 90},
@@ -196,3 +261,4 @@
   }
   
   setupMap();
+    

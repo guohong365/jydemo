@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/id.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.js"></script>
@@ -42,14 +43,7 @@
 								</div>
 								<div class="data-box">
 									<span class="data-label">当年收入：</span> <span class="data-number">231442</span>
-								</div>
-								<div id="incomeSelector" class="chart-selector">
-									<div class="data-label">
-										<div>年</div>
-										<div>月</div>
-										<div>日</div>
-									</div>
-								</div>
+								</div>								
 								<div id="incomePie" class="chart-float"></div>
 							</div>
 						</div>
@@ -72,7 +66,7 @@
 								<div class="data-box">
 									<span class="data-label">当年人次：</span> <span class="data-number">231442</span>
 								</div>
-								<div class="chart-float"></div>
+								<div id="timesPie"  class="chart-float"></div>
 							</div>
 						</div>
 					</div>
@@ -86,6 +80,11 @@
 										<div class="char-title">昆明市地图</div>
 									</div>
 								</div>
+								<select id="mainPageType">
+									<option>年度</option>
+									<option>月度</option>
+									<option>当日</option>
+								</select>
 								<div class="map" id="mainMap"></div>
 							</div>
 						</div>
@@ -93,17 +92,12 @@
 					<div style="padding-top: 10px; height: 30%;">
 						<div class="thin-border">
 							<div class="thick-border">
-								<div class=“char-title-box”>
+								<div class=“chart-title-box”>
 									<div class="char-title-inner-box">
 										<div class="char-title">历史数据</div>
 									</div>
 								</div>
-								<div class="chart-box" id="historyChart">
-									<div class="chart-selector data-label">
-										<div>年</div>
-										<div>月</div>
-										<div class="active">日</div>
-									</div>
+								<div class="chart-box" id="historyChart">									
 									<div class="chart"></div>
 								</div>
 							</div>
@@ -168,37 +162,7 @@
 		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");
 	    $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() -41) + "px");
 	});
-/*
-	var myMap = echarts.init(document.getElementById("mainMap"));
-		myMap.setOption(
-		{
-			geo:{
-				map: "昆明",
-				label: {					
-					normal:{
-						show:true,
-						color:'#fff'
-					}
-				},
-				roam: true,
-				itemStyle: {
-					normal: {
-						// 地图省份填充色
-						areaColor: 'rgba(20, 41, 87, 0.6)',
-						borderColor: '#0692a4',
-						borderWidth: 1,
-						},
-            emphasis: {
-                areaColor: '#0b1c2d'
-            }
-        }
 
-			}
-		});
-		window.addEventListener('resize', function(){
-			myMap.resize();
-		});		
-		*/
 	</script>
 </body>
 </html>
