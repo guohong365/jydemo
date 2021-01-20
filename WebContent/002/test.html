@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<link href="css/base.css" rel="stylesheet" type="text/css">
-<link href="css/id.css" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.js"></script>
-<title>昆明市交运集团大数据分析系统</title>
+	<meta charset="utf-8">
+	<link href="css/base.css" rel="stylesheet" type="text/css">
+	<link href="css/id.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery.js"></script>
+	<title>昆明市交运集团大数据分析系统</title>
 </head>
+
 <body>
 	<div class="page_header">
 		<div class="page_title">昆明市交运集团大数据分析系统</div>
@@ -24,7 +26,7 @@
 		</div>
 		<div class="page-tabs" id="page-tabs">
 			<!-- 集团经营状况总览 -->
-			<div class="inner-page">
+			<div class="inner-page" id="page-1">
 				<div class="page-col" style="width: 25%; padding-left: 10px; padding-right: 5px;">
 					<div style="padding-top: 10px; height: 50%;">
 						<div class="thin-border">
@@ -43,7 +45,7 @@
 								</div>
 								<div class="data-box">
 									<span class="data-label">当年收入：</span> <span class="data-number">231442</span>
-								</div>								
+								</div>
 								<div id="incomePie" class="chart-float"></div>
 							</div>
 						</div>
@@ -66,7 +68,7 @@
 								<div class="data-box">
 									<span class="data-label">当年人次：</span> <span class="data-number">231442</span>
 								</div>
-								<div id="timesPie"  class="chart-float"></div>
+								<div id="timesPie" class="chart-float"></div>
 							</div>
 						</div>
 					</div>
@@ -80,11 +82,12 @@
 										<div class="char-title">昆明市地图</div>
 									</div>
 								</div>
-								<select id="mainPageType">
-									<option>年度</option>
-									<option>月度</option>
-									<option>当日</option>
-								</select>
+								<div id="mainPageType">
+									<div class="left active"><a>年度</a></div>
+									<div class="right"><a>当日</a></div>
+									<div class="middle"><a>月度</a></div>
+
+								</div>
 								<div class="map" id="mainMap"></div>
 							</div>
 						</div>
@@ -97,8 +100,8 @@
 										<div class="char-title">历史数据</div>
 									</div>
 								</div>
-								<div class="chart-box" id="historyChart">									
-									<div class="chart"></div>
+								<div class="chart-box">
+									<div class="chart" id="historyChart"></div>
 								</div>
 							</div>
 						</div>
@@ -113,6 +116,24 @@
 										<div class="char-title">收入排名</div>
 									</div>
 								</div>
+								<div class="table-box">
+									<table class="data-table" id="incomeTable">
+										<tbody>
+											<tr>
+												<th width="15%">排名</td>
+												<th width="35%">地区</td>
+												<th width="50%">收入(万元)</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="order" style="background-color: red;">1</div>
+												</td>
+												<td>盘龙区</td>
+												<td>234234</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -123,6 +144,12 @@
 									<div class="char-title-inner-box">
 										<div class="char-title">人次排名</div>
 									</div>
+								</div>
+								<div class="table-box">
+									<table class="data-table" id="timesTable">
+										<tbody>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
@@ -135,6 +162,12 @@
 										<div class="char-title">会员排名</div>
 									</div>
 								</div>
+								<div class="table-box">
+									<table class="data-table" id="memberTable">
+										<tbody>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -142,7 +175,90 @@
 			</div>
 
 			<!-- 各地经营状况 -->
-			<div class="inner-page" style="display: none;"></div>
+			<div class="inner-page" id="page-2" style="display: none;">
+				<div class="thin-border">
+					<div class="thick-border">
+						<div class="page-col county-selector-box" style="padding-top: 20px; width: 150px; color:white;">
+							<div class="county-selector-wrapper active">
+								<div class="county-selector">
+									<div>五华区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>盘龙区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>官渡区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>呈贡区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>西山区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>安宁市</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>宜良县</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>石林彝族自治县</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>晋宁区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector ">
+									<div>嵩明县</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector ">
+									<div>富民县</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector ">
+									<div>寻甸回族彝族自治县</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>东川区</div>
+								</div>
+							</div>
+							<div class="county-selector-wrapper">
+								<div class="county-selector">
+									<div>禄劝彝族苗族自治县</div>
+								</div>
+							</div>
+						</div>
+						<div class="page-col" id="middle-area" style="width: 50%; background-color: blueviolet;">
+
+						</div>
+						<div class="page-col-right" style="width: 250px; background-color: chartreuse;">
+
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- 各地经营对比 -->
 			<div class="inner-page" style="display: none;"></div>
 			<!-- 经营预测 -->
@@ -152,17 +268,21 @@
 	<script src="js/echarts.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-table.js"></script>
-	<script src="map/530100.js"></script>	
-	<script src="js/base.js"></script>
+	<script src="map/530100.js"></script>
 	<script src="js/charts/overview.js"></script>
-	<script type="text/javascript">
-    $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");
-    $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() -41) + "px");
-	window.addEventListener('resize', function(){
-		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");
-	    $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() -41) + "px");
-	});
+	<script src="js/charts/contuies.js"></script>
+	<script src="js/base.js"></script>
 
+	<script type="text/javascript">
+		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
+		$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");		
+		window.addEventListener('resize', function () {
+			$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
+			$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
+			
+		});
+		$.Overview.init();
 	</script>
 </body>
+
 </html>

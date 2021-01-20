@@ -1,20 +1,22 @@
 /**
  * 
  */
+
  function selectPage(index){
             switch(index)
             {
             case 0:
-            	overview();
+				$.Overview.init();
+				$.Overview.update();
             	break;
             case 1:
-            	branchOverview();
+				$.Counties.init();
+				$.Counties.update()
             	break;
             case 2:
-            	compare();
             	break;
             case 3:
-            	prediction();
+				break;
             } 
  }
  $('.nav-top ul li').each(function(index){
@@ -24,13 +26,5 @@
  		selectPage(index);
  	});
  });
-  
- function overview() {
- }
- function branchOverview(){
- }
- function compare(){
- }
- function prediction(){
- }
+
  
