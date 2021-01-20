@@ -1,6 +1,0 @@
-/**
- * 
- */
- var overviewCharts=new function(){
- 	
- };
