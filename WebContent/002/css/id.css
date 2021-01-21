@@ -49,3 +49,8 @@
 #mainPageType a:focus, #mainPageType a:active, #mainPageType a:hover, #mainPageType .active a{
 	color: red;
 }
+
+#countyCharts{
+	width: 100%;
+	height: 100%;
+}

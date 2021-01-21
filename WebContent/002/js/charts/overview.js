@@ -30,16 +30,16 @@
 							tooltip: { trigger: 'item', formatter: '{b}<br/> {c} ({d}%)' },
 							series: {
 								type: 'pie',
-								radius: ["10", "70"],
+								radius: ["15%", "50%"],
 								center: ['50%', '40%'],
 								roseType: 'radius',
-
-								labelLine: {
-									// 链接图形的线条
-									length: 6,
-									// 链接文字的线条
-									lehgth2: 8
-								},
+								label : {
+									fontSize : 12,
+									color : '#FFF',
+									backgroundColor : 'transparent',
+									boderColor : 'transparent',
+									shadowColor : 'transparent'
+								},								
 								data: data[index],
 							}
 						};
@@ -69,9 +69,16 @@
 							tooltip: { trigger: 'item', formatter: '{b}<br/> {c} ({d}%)' },
 							series: {
 								type: 'pie',
-								radius: ["10", "70"],
+								radius: ["15%", "50%"],
 								center: ['50%', '40%'],
 								roseType: 'radius',
+								label : {
+									fontSize : 12,
+									color : '#FFF',
+									backgroundColor : 'transparent',
+									boderColor : 'transparent',
+									shadowColor : 'transparent'
+								},
 								data: data[index],
 							}
 						};
