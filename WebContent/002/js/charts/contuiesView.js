@@ -1,6 +1,6 @@
 (function ($) {
     var contiesOptions = {
-        charts: ['#incomeCharts', '#incomePies', "#serviceCharts","#servicePies", "#memberCharts", "#memberPies"],
+        charts: ['#incomeCharts', '#incomePies', "#serviceCharts","#servicePies", "#memberCharts", "#memberPies", "#vechicleChart", "#employeeChart"],
         selectors: function () { return $("#page-2 .county-selector-box").find(".county-selector-wrapper"); },
         optionFactory: function (countyName) {
             var subtext=["历\n史\n变\n化","历\n史\n累\n计"];
@@ -803,6 +803,81 @@
                         },
                     ],
                 },
+                //车辆类别
+                {                    
+                    title: [
+                        {                            
+                            left : 'center',                            
+                            subtext : "车辆类型",
+                            subtextStyle : {
+                                color : 'yellow',
+                            },
+                            textAlign : 'center'
+                        }, 
+                    ],
+                    tooltip: {
+                        trigger: 'item',                        
+                    },
+                    series: [
+                        {
+                            name: '车辆类型',
+                            type: 'pie',
+                            radius : '25%',
+                            bottom : 0,
+                            label : {
+                                fontSize : 12,
+                                color : '#FFF',
+                                backgroundColor : 'transparent',
+                                boderColor : 'transparent',
+                                shadowColor : 'transparent'
+                            },
+                            data: [ 
+                                {name : "公交车", value: 65},
+                                {name : "长途客运", value: 21},
+                                {name : "出租车", value: 55},
+                                {name : "其他", value: 15}
+                            ]
+                        },
+                    ],
+                },
+                //员工类别
+                {                    
+                    title: [
+                        {                            
+                            left : 'center',                            
+                            subtext : "员工分类",
+                            subtextStyle : {
+                                color : 'yellow',
+                            },
+                            textAlign : 'center'
+                        }, 
+                    ],
+                    tooltip: {
+                        trigger: 'item',                        
+                    },
+                    series: [
+                        {
+                            name: '员工分类',
+                            type: 'pie',
+                            radius : '25%',
+                            bottom : 0,
+                            label : {
+                                fontSize : 12,
+                                color : '#FFF',
+                                backgroundColor : 'transparent',
+                                boderColor : 'transparent',
+                                shadowColor : 'transparent'
+                            },
+                            data: [ 
+                                {name : "管理层", value: 45},
+                                {name : "职员", value: 145},
+                                {name : "司机", value: 445},
+                                {name : "后勤", value: 310},
+                                {name : "其他", value: 100},
+                            ]
+                        },
+                    ],
+                },
             ];
             var data = [];
             var counties = [
@@ -825,10 +900,9 @@
             middle.css({ "width": width + "px" });
         }
     }
-    var Counties = function (options) {
+    var CountiesView = function (options) {
         this._counties =[
-            "五华区", "盘龙区", "官渡区", "呈贡区", "西山区", "安宁市", "宜良县", "石林彝族自治县",
-            "晋宁区", "嵩明县", "富民县", "寻甸回族彝族自治县", "东川区", "禄劝彝族苗族自治县"
+            "安宁公交","东川公交","元谋公交","禄劝公交","景洪公交","嵩明公交"
         ];
         this._currentCounty = 0;
         this._currentType = 0;
@@ -876,7 +950,7 @@
     };
 
     $.extend({
-        Counties: new Counties(contiesOptions)
+        CountiesView: new CountiesView(contiesOptions)
     });
     console.log("counties was loaded.")
 

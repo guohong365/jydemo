@@ -11,19 +11,28 @@
 					function (index) {
 						var data = [
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 						];
 						var option = {
@@ -33,13 +42,13 @@
 								radius: ["15%", "50%"],
 								center: ['50%', '40%'],
 								roseType: 'radius',
-								label : {
-									fontSize : 12,
-									color : '#FFF',
-									backgroundColor : 'transparent',
-									boderColor : 'transparent',
-									shadowColor : 'transparent'
-								},								
+								label: {
+									fontSize: 12,
+									color: '#FFF',
+									backgroundColor: 'transparent',
+									boderColor: 'transparent',
+									shadowColor: 'transparent'
+								},
 								data: data[index],
 							}
 						};
@@ -50,19 +59,28 @@
 					function (index) {
 						var data = [
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							]
 						];
 						var option = {
@@ -72,12 +90,12 @@
 								radius: ["15%", "50%"],
 								center: ['50%', '40%'],
 								roseType: 'radius',
-								label : {
-									fontSize : 12,
-									color : '#FFF',
-									backgroundColor : 'transparent',
-									boderColor : 'transparent',
-									shadowColor : 'transparent'
+								label: {
+									fontSize: 12,
+									color: '#FFF',
+									backgroundColor: 'transparent',
+									boderColor: 'transparent',
+									shadowColor: 'transparent'
 								},
 								data: data[index],
 							}
@@ -111,19 +129,28 @@
 					function (index) {
 						var data = [
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							],
 							[
-								{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-								{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-								{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+								{ name: "安宁公交", value: 80 },
+								{ name: "东川公交", value: 90 },
+								{ name: "元谋公交", value: 110 },
+								{ name: "禄劝公交", value: 50 },
+								{ name: "景洪公交", value: 65 },
+								{ name: "嵩明公交", value: 30 },
 							]
 						];
 						var option = {
@@ -140,7 +167,7 @@
 							},
 							series: [{
 								type: 'map',
-								map: '昆明',
+								map: '云南',
 								roam: true,
 								data: data[index],
 								itemStyle: {
@@ -194,59 +221,91 @@
 			var data = [
 				[
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
+
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
+
 					]
 				],
 				[
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
+
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
+
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
+
 					]
 				],
 				[
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
 					],
 					[
-						{ name: "五华", value: 80 }, { name: "盘龙", value: 90 }, { name: "官渡", value: 110 }, { name: "呈贡", value: 50 }, { name: "西山", value: 65 }, { name: "安宁", value: 30 },
-						{ name: "宜良", value: 20 }, { name: "石林", value: 40 }, { name: "晋宁", value: 10 }, { name: "嵩明", value: 20 }, { name: "富民", value: 20 }, { name: "寻甸", value: 10 },
-						{ name: "东川", value: 30 }, { name: "禄劝", value: 5 }
+						{ name: "安宁公交", value: 80 },
+						{ name: "东川公交", value: 90 },
+						{ name: "元谋公交", value: 110 },
+						{ name: "禄劝公交", value: 50 },
+						{ name: "景洪公交", value: 65 },
+						{ name: "嵩明公交", value: 30 },
 					]
 				]
 			];
-			var headers = ["<tr><th width='15%'>排名</td><th width='35%'>地区</td><th width='50%'>收入(万元)</td></tr>",
-				"<tr><th width='15%'>排名</td><th width='35%'>地区</td><th width='50%'>服务人次</td></tr>",
-				"<tr><th width='15%'>排名</td><th width='35%'>地区</td><th width='50%'>会员新增</td></tr>"];
+			var headers = ["<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>收入(万元)</td></tr>",
+				"<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>服务人次</td></tr>",
+				"<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>会员新增</td></tr>"];
 			var colors = [["red", "orange", "coral", "cyan", "darkcyan"], ["red", "orange", "coral", "cyan", "darkcyan"], ["red", "orange", "coral", "cyan", "darkcyan"]];
 			var tops = [5, 5, 5];
 			function comparer(a, b) { return b.value - a.value; }
@@ -254,6 +313,7 @@
 			var tables = $("#page-1 tbody");
 			return [
 				{
+					header: headers[0],
 					table: tables.eq(0),
 					data: data[dataType][0],
 					comparer: comparers[0],
@@ -261,6 +321,7 @@
 					colors: colors[0]
 				},
 				{
+					header: headers[1],
 					table: tables.eq(1),
 					data: data[dataType][1],
 					comparer: comparers[1],
@@ -268,6 +329,7 @@
 					colors: colors[1]
 				},
 				{
+					header: headers[2],
 					table: tables.eq(2),
 					data: data[dataType][2],
 					comparer: comparers[2],
@@ -295,7 +357,7 @@
 		else {
 			console.error("tableDataFactory is not a function or null.")
 			return;
-		}		
+		}
 		this._current = 0;
 		this._defaultComparer = function (a, b) { return b.value - a.value; };
 
@@ -305,7 +367,7 @@
 				var thisChart = echarts.init(items[index].item[0]);
 				items[index].chart = thisChart;
 				var num = this._charts.push(items[index]);
-				window.addEventListener('resize', function () { $.Overview._charts[ num -1 ].chart.resize(); });
+				window.addEventListener('resize', function () { $.Overview._charts[num - 1].chart.resize(); });
 			}
 			var tables = this._tablesFactory(this._current);
 			if ($.isArray(tables)) {
@@ -324,7 +386,7 @@
 		this.updateTables = function (dataType) {
 			if (this._current != dataType) {
 				this._current = dataType;
-				this._tables = this.tablesFactory(dataType);
+				this._tables = this._tablesFactory(dataType);
 			}
 			for (let num = 0; num < this._tables.length; num++) {
 				var table = this._tables[num];
@@ -360,10 +422,10 @@
 		};
 
 		this.update = function (timeType) {
-			if(typeof timeType === "undefined"){
+			if (typeof timeType === "undefined") {
 				this.updateTables(this._current);
 				this.updateCharts(this._current);
-			} else{
+			} else {
 				this.updateTables(timeType);
 				this.updateCharts(timeType);
 			}

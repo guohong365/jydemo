@@ -54,3 +54,13 @@
 	width: 100%;
 	height: 100%;
 }
+
+#vechicleChart, #employeeChart{
+	width: 100%;
+	height: 30%;
+}
+
+#CompareChart{
+	width: 100;
+	height: 100%;
+}

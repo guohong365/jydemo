@@ -10,8 +10,8 @@
 				$.Overview.update();
             	break;
             case 1:
-				$.Counties.init();
-				$.Counties.update()
+				$.CountiesView.init();
+				$.CountiesView.update()
             	break;
             case 2:
             	break;

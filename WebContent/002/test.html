@@ -26,7 +26,7 @@
 		</div>
 		<div class="page-tabs" id="page-tabs">
 			<!-- 集团经营状况总览 -->
-			<div class="inner-page" id="page-1">
+			<div class="inner-page" id="page-1" style="display: none;">
 				<div class="page-col" style="width: 25%; padding-left: 10px; padding-right: 5px;">
 					<div style="padding-top: 10px; height: 50%;">
 						<div class="thin-border">
@@ -181,72 +181,32 @@
 						<div class="page-col county-selector-box" style="padding-top: 20px; width: 150px; color:white;">
 							<div class="county-selector-wrapper active">
 								<div class="county-selector">
-									<div>五华区</div>
+									<div>安宁公交</div>
 								</div>
 							</div>
 							<div class="county-selector-wrapper">
 								<div class="county-selector">
-									<div>盘龙区</div>
+									<div>东川公交</div>
 								</div>
 							</div>
 							<div class="county-selector-wrapper">
 								<div class="county-selector">
-									<div>官渡区</div>
+									<div>元谋公交</div>
 								</div>
 							</div>
 							<div class="county-selector-wrapper">
 								<div class="county-selector">
-									<div>呈贡区</div>
+									<div>禄劝公交</div>
 								</div>
 							</div>
 							<div class="county-selector-wrapper">
 								<div class="county-selector">
-									<div>西山区</div>
+									<div>景洪公交</div>
 								</div>
 							</div>
 							<div class="county-selector-wrapper">
 								<div class="county-selector">
-									<div>安宁市</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>宜良县</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>石林彝族自治县</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>晋宁区</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector ">
-									<div>嵩明县</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector ">
-									<div>富民县</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector ">
-									<div>寻甸回族彝族自治县</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>东川区</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>禄劝彝族苗族自治县</div>
+									<div>嵩明公交</div>
 								</div>
 							</div>
 						</div>
@@ -265,33 +225,70 @@
 							</div>
 						</div>
 						<div class="page-col-right county-info-box" style="width: 250px;">
-							<div>								
+							<div class="data-box">
+								<span class="data-label">运营车辆：</span>
+								<span class="data-number">128两</span>
+							</div>
+							<div id="vechicleChart"></div>
+							<div class="data-box">
+								<span class="data-label">员工:</span>
+								<span class="data-number">323人</span>
+							</div>
+							<div id="employeeChart"></div>
+							<div class="data-box">
+								<span class="data-label">纯利润：</span>
+								<span class="data-number">423万元</span>
+							</div>
+							<div class="data-box">
+								<span class="data-label">人均纯利：</span>
+								<span class="data-number">1.12万元</span>
+							</div>
+							<div class="data-box">
+								<span class="data-label">人均成本：</span>
+								<span class="data-number">2.53万元</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- 各地经营对比 -->
-			<div class="inner-page" style="display: none;"></div>
 			<!-- 经营预测 -->
-			<div class="inner-page" style="display: none;"></div>
+			<div id="page-4" class="inner-page" style="display: none;">
+				<div class="page-col">
+				</div>
+				<div class="page-col">
+				</div>
+			</div>
+			<!-- 各地经营对比 -->
+
+			<div di="page-3" class="inner-page">
+				<div class="page-col" style="width: 100%;">
+					<div class="thin-border">
+						<div class="thick-border">
+							<div id="CompareChart">
+
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
 		</div>
 	</div>
 	<script src="js/echarts.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-table.js"></script>
-	<script src="map/530100.js"></script>
+	<script src="map/yunnan.js"></script>
 	<script src="js/charts/overview.js"></script>
-	<script src="js/charts/contuies.js"></script>
+	<script src="js/charts/contuiesView.js"></script>
+	<script src="js/charts/compareView.js"></script>
 	<script src="js/base.js"></script>
 
 	<script type="text/javascript">
 		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
-		$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");		
+		$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
 		window.addEventListener('resize', function () {
 			$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
 			$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
-			
+
 		});
 		$.Overview.init();
 	</script>
