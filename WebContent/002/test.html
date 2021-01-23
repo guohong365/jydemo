@@ -2,296 +2,298 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<link href="css/base.css" rel="stylesheet" type="text/css">
-	<link href="css/id.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
-	<script src="js/jquery.js"></script>
-	<title>昆明市交运集团大数据分析系统</title>
+    <meta charset="utf-8">
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link href="css/id.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery.js"></script>
+    <title>昆明市交运集团大数据分析系统</title>
 </head>
 
 <body>
-	<div class="page_header">
-		<div class="page_title">昆明市交运集团大数据分析系统</div>
-	</div>
-	<div class="data_body" id='data-body'>
-		<div class="nav-top">
-			<ul style="height: 30px; margin-bottom: 0px;">
-				<li class="nav-left nav-active">经营情况总览</li>
-				<li class="nav-left">各地经营状况</li>
-				<li class="nav-right">经营预测</li>
-				<li class="nav-right">对比分析</li>
-			</ul>
-		</div>
-		<div class="page-tabs" id="page-tabs">
-			<!-- 集团经营状况总览 -->
-			<div class="inner-page" id="page-1" style="display: none;">
-				<div class="page-col" style="width: 25%; padding-left: 10px; padding-right: 5px;">
-					<div style="padding-top: 10px; height: 50%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">收入</div>
-									</div>
-								</div>
-								<div class="data-box">
-									<div class="main-label">当日收入：</div>
-									<div class="main-number">3254534</div>
-								</div>
-								<div class="data-box">
-									<span class="data-label">当月收入：</span> <span class="data-number">231442</span>
-								</div>
-								<div class="data-box">
-									<span class="data-label">当年收入：</span> <span class="data-number">231442</span>
-								</div>
-								<div id="incomePie" class="chart-float"></div>
-							</div>
-						</div>
-					</div>
-					<div style="padding-top: 10px; height: 50%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">乘车人次</div>
-									</div>
-								</div>
-								<div class="data-box">
-									<div class="main-label">当日人次：</div>
-									<div class="main-number">3254534</div>
-								</div>
-								<div class="data-box">
-									<span class="data-label">当月人次：</span> <span class="data-number">231442</span>
-								</div>
-								<div class="data-box">
-									<span class="data-label">当年人次：</span> <span class="data-number">231442</span>
-								</div>
-								<div id="timesPie" class="chart-float"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="page-col" style="width: 50%; padding-left: 5px; padding-right: 5px;">
-					<div style="padding-top: 10px; height: 70%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">昆明市地图</div>
-									</div>
-								</div>
-								<div id="mainPageType">
-									<div class="left active"><a>年度</a></div>
-									<div class="right"><a>当日</a></div>
-									<div class="middle"><a>月度</a></div>
+    <div class="page_header">
+        <div class="page_title">昆明市交运集团大数据分析系统</div>
+    </div>
+    <div class="data_body" id='data-body'>
+        <div class="nav-top">
+            <ul style="height: 30px; margin-bottom: 0px;">
+                <li class="nav-left nav-active">经营情况总览</li>
+                <li class="nav-left">各地经营状况</li>
+                <li class="nav-right">经营预测</li>
+                <li class="nav-right">对比分析</li>
+            </ul>
+        </div>
+        <div class="page-tabs" id="page-tabs">
+            <!-- 集团经营状况总览 -->
+            <div class="inner-page" id="page-1">
+                <div class="page-col" style="width: 25%; padding-left: 10px; padding-right: 5px;">
+                    <div style="padding-top: 10px; height: 50%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">收入</div>
+                                    </div>
+                                </div>
+                                <div class="data-box">
+                                    <div class="main-label">当日收入：</div>
+                                    <div class="main-number">3254534</div>
+                                </div>
+                                <div class="data-box">
+                                    <span class="data-label">当月收入：</span> <span class="data-number">231442</span>
+                                </div>
+                                <div class="data-box">
+                                    <span class="data-label">当年收入：</span> <span class="data-number">231442</span>
+                                </div>
+                                <div id="incomePie" class="chart-float"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px; height: 50%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">乘车人次</div>
+                                    </div>
+                                </div>
+                                <div class="data-box">
+                                    <div class="main-label">当日人次：</div>
+                                    <div class="main-number">3254534</div>
+                                </div>
+                                <div class="data-box">
+                                    <span class="data-label">当月人次：</span> <span class="data-number">231442</span>
+                                </div>
+                                <div class="data-box">
+                                    <span class="data-label">当年人次：</span> <span class="data-number">231442</span>
+                                </div>
+                                <div id="timesPie" class="chart-float"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-col" style="width: 50%; padding-left: 5px; padding-right: 5px;">
+                    <div style="padding-top: 10px; height: 70%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">昆明市地图</div>
+                                    </div>
+                                </div>
+                                <div id="mainPageType">
+                                    <div class="left active"><a>年度</a></div>
+                                    <div class="right"><a>当日</a></div>
+                                    <div class="middle"><a>月度</a></div>
 
-								</div>
-								<div class="map" id="mainMap"></div>
-							</div>
-						</div>
-					</div>
-					<div style="padding-top: 10px; height: 30%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“chart-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">历史数据</div>
-									</div>
-								</div>
-								<div class="chart-box">
-									<div class="chart" id="historyChart"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="page-col" style="width: 25%; padding-left: 5px; padding-right: 10px;">
-					<div style="padding-top: 10px; height: 30%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">收入排名</div>
-									</div>
-								</div>
-								<div class="table-box">
-									<table class="data-table" id="incomeTable">
-										<tbody>
-											<tr>
-												<th width="15%">排名</td>
-												<th width="35%">地区</td>
-												<th width="50%">收入(万元)</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="order" style="background-color: red;">1</div>
-												</td>
-												<td>盘龙区</td>
-												<td>234234</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div style="padding-top: 10px; height: 35%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">人次排名</div>
-									</div>
-								</div>
-								<div class="table-box">
-									<table class="data-table" id="timesTable">
-										<tbody>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div style="padding-top: 10px; height: 35%;">
-						<div class="thin-border">
-							<div class="thick-border">
-								<div class=“char-title-box”>
-									<div class="char-title-inner-box">
-										<div class="char-title">会员排名</div>
-									</div>
-								</div>
-								<div class="table-box">
-									<table class="data-table" id="memberTable">
-										<tbody>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                                </div>
+                                <div class="map" id="mainMap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px; height: 30%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“chart-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">历史数据</div>
+                                    </div>
+                                </div>
+                                <div class="chart-box">
+                                    <div class="chart" id="historyChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-col" style="width: 25%; padding-left: 5px; padding-right: 10px;">
+                    <div style="padding-top: 10px; height: 30%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">收入排名</div>
+                                    </div>
+                                </div>
+                                <div class="table-box">
+                                    <table class="data-table" id="incomeTable">
+                                        <tbody>
+                                            <tr>
+                                                <th width="15%">排名</td>
+                                                    <th width="35%">地区</td>
+                                                        <th width="50%">收入(万元)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="order" style="background-color: red;">1</div>
+                                                </td>
+                                                <td>盘龙区</td>
+                                                <td>234234</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px; height: 35%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">人次排名</div>
+                                    </div>
+                                </div>
+                                <div class="table-box">
+                                    <table class="data-table" id="timesTable">
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px; height: 35%;">
+                        <div class="thin-border">
+                            <div class="thick-border">
+                                <div class=“char-title-box”>
+                                    <div class="char-title-inner-box">
+                                        <div class="char-title">会员排名</div>
+                                    </div>
+                                </div>
+                                <div class="table-box">
+                                    <table class="data-table" id="memberTable">
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<!-- 各地经营状况 -->
-			<div class="inner-page" id="page-2" style="display: none;">
-				<div class="thin-border">
-					<div class="thick-border">
-						<div class="page-col county-selector-box" style="padding-top: 20px; width: 150px; color:white;">
-							<div class="county-selector-wrapper active">
-								<div class="county-selector">
-									<div>安宁公交</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>东川公交</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>元谋公交</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>禄劝公交</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>景洪公交</div>
-								</div>
-							</div>
-							<div class="county-selector-wrapper">
-								<div class="county-selector">
-									<div>嵩明公交</div>
-								</div>
-							</div>
-						</div>
-						<div class="page-col" id="middle-area" style="width: 50%;">
-							<div class="chart-box third">
-								<div id="incomeCharts" class="conuty-chart-line"></div>
-								<div id="incomePies" class="county-chart-pie"></div>
-							</div>
-							<div class="chart-box third">
-								<div id="serviceCharts" class="conuty-chart-line"></div>
-								<div id="servicePies" class="county-chart-pie"></div>
-							</div>
-							<div class="chart-box third">
-								<div id="memberCharts" class="conuty-chart-line"></div>
-								<div id="memberPies" class="county-chart-pie"></div>
-							</div>
-						</div>
-						<div class="page-col-right county-info-box" style="width: 250px;">
-							<div class="data-box">
-								<span class="data-label">运营车辆：</span>
-								<span class="data-number">128两</span>
-							</div>
-							<div id="vechicleChart"></div>
-							<div class="data-box">
-								<span class="data-label">员工:</span>
-								<span class="data-number">323人</span>
-							</div>
-							<div id="employeeChart"></div>
-							<div class="data-box">
-								<span class="data-label">纯利润：</span>
-								<span class="data-number">423万元</span>
-							</div>
-							<div class="data-box">
-								<span class="data-label">人均纯利：</span>
-								<span class="data-number">1.12万元</span>
-							</div>
-							<div class="data-box">
-								<span class="data-label">人均成本：</span>
-								<span class="data-number">2.53万元</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 经营预测 -->
-			<div id="page-4" class="inner-page" style="display: none;">
-				<div class="page-col">
-				</div>
-				<div class="page-col">
-				</div>
-			</div>
-			<!-- 各地经营对比 -->
+            <!-- 各地经营状况 -->
+            <div class="inner-page" id="page-2" style="display: none;">
+                <div class="thin-border">
+                    <div class="thick-border">
+                        <div class="page-col county-selector-box" style="padding-top: 20px; width: 150px; color:white;">
+                            <div class="county-selector-wrapper active">
+                                <div class="county-selector">
+                                    <div>安宁公交</div>
+                                </div>
+                            </div>
+                            <div class="county-selector-wrapper">
+                                <div class="county-selector">
+                                    <div>东川公交</div>
+                                </div>
+                            </div>
+                            <div class="county-selector-wrapper">
+                                <div class="county-selector">
+                                    <div>元谋公交</div>
+                                </div>
+                            </div>
+                            <div class="county-selector-wrapper">
+                                <div class="county-selector">
+                                    <div>禄劝公交</div>
+                                </div>
+                            </div>
+                            <div class="county-selector-wrapper">
+                                <div class="county-selector">
+                                    <div>景洪公交</div>
+                                </div>
+                            </div>
+                            <div class="county-selector-wrapper">
+                                <div class="county-selector">
+                                    <div>嵩明公交</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-col" id="middle-area" style="width: 50%;">
+                            <div class="chart-box third">
+                                <div id="incomeCharts" class="conuty-chart-line"></div>
+                                <div id="incomePies" class="county-chart-pie"></div>
+                            </div>
+                            <div class="chart-box third">
+                                <div id="serviceCharts" class="conuty-chart-line"></div>
+                                <div id="servicePies" class="county-chart-pie"></div>
+                            </div>
+                            <div class="chart-box third">
+                                <div id="memberCharts" class="conuty-chart-line"></div>
+                                <div id="memberPies" class="county-chart-pie"></div>
+                            </div>
+                        </div>
+                        <div class="page-col-right county-info-box" style="width: 250px;">
+                            <div class="data-box">
+                                <span class="data-label">运营车辆：</span>
+                                <span class="data-number">128两</span>
+                            </div>
+                            <div id="vechicleChart"></div>
+                            <div class="data-box">
+                                <span class="data-label">员工:</span>
+                                <span class="data-number">323人</span>
+                            </div>
+                            <div id="employeeChart"></div>
+                            <div class="data-box">
+                                <span class="data-label">纯利润：</span>
+                                <span class="data-number">423万元</span>
+                            </div>
+                            <div class="data-box">
+                                <span class="data-label">人均纯利：</span>
+                                <span class="data-number">1.12万元</span>
+                            </div>
+                            <div class="data-box">
+                                <span class="data-label">人均成本：</span>
+                                <span class="data-number">2.53万元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 经营预测 -->
+            <div id="page-4" class="inner-page" style="display: none;">
+                <div class="page-col">
+                </div>
+                <div class="page-col">
+                </div>
+            </div>
+            <!-- 各地经营对比 -->
 
-			<div di="page-3" class="inner-page">
-				<div class="page-col" style="width: 100%;">
-					<div class="thin-border">
-						<div class="thick-border">
-							<div id="CompareChart">
+            <div di="page-3" class="inner-page" style="display: none;">
+                <div class="page-col" style="width: 100%;">
+                    <div class="thin-border">
+                        <div class="thick-border">
+                            <div id="CompareChart">
 
-							</div>
-						</div>
-					</div>
-				</div>				
-			</div>
-		</div>
-	</div>
-	<script src="js/echarts.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-table.js"></script>
-	<script src="map/yunnan.js"></script>
-	<script src="js/charts/overview.js"></script>
-	<script src="js/charts/contuiesView.js"></script>
-	<script src="js/charts/compareView.js"></script>
-	<script src="js/base.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/echarts.js"></script>
+    <script src="js/shine.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+    <script src="map/yunnan.js"></script>
+    <script src="js/charts/data.js"></script>
+    <script src="js/charts/overview.js"></script>
+    <script src="js/charts/contuiesView.js"></script>
+    <script src="js/charts/compareView.js"></script>
+    <script src="js/base.js"></script>
 
-	<script type="text/javascript">
-		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
-		$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
-		window.addEventListener('resize', function () {
-			$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
-			$('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
+    <script type="text/javascript">
+        $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
+        $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
+        window.addEventListener('resize', function() {
+            $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
+            $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
 
-		});
-		$.Overview.init();
-	</script>
+        });
+        $.Overview.update();
+    </script>
 </body>
 
 </html>
