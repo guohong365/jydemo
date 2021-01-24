@@ -16,7 +16,7 @@
             name: '',
             min: 5,
             max: 100,
-            baseline: null,
+            baseline: baseline,
             rows: [
                 { name: "安宁公交", scale: 1.0, solt: { min: 0, max: 0 } },
                 { name: "东川公交", scale: 0.8, solt: { min: -0.12, max: 0.2 } },

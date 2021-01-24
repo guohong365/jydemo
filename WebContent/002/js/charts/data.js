@@ -1,15 +1,14 @@
 (function($) {
-
+    if (!$) {
+        return;
+    }
 
     var DataGenerator = function(options) {
-        this.random = function(min, max) {
-            return Math.random() * (max - min) + min;
-        }
+        this.random = new RandomGenerator();
+        this.random.randomSeed(new Date().getMilliseconds())
         this.setOption = function(options) {
-            if (options) {
-                $.extend(true, this.options, options);
-            }
-        };
+            $.extend(true, this.options, options);
+        }
 
         this.options = {
             name: '',
@@ -34,9 +33,9 @@
         this.setOption(options);
 
         this.generate = function(options) {
-            if (options) {
-                this.setOption(options);
-            }
+
+            this.setOption(options);
+
             var rows = [];
             var headerline = [this.options.name];
             this.options.columns.forEach(function(column) {
@@ -69,9 +68,9 @@
                     if (baseline && j < this.options.baseline.length) {
                         value = this.options.baseline[j];
                     } else {
-                        value = this.random(this.options.min, this.options.max);
+                        value = this.random.next(this.options.min, this.options.max);
                     }
-                    value += this.random(this.options.rows[i].solt.min, this.options.rows[i].solt.max)
+                    value += value * this.random.next(this.options.rows[i].solt.min, this.options.rows[i].solt.max);
                     value *= this.options.rows[i].scale;
                     value = parseFloat(value.toFixed(2));
                     row.push(value);
@@ -102,7 +101,8 @@
                 accumulated.push(parseFloat(sum.toFixed(2)));
             }
             return accumulated;
-        }
+
+        };
     };
     $.extend({ createGenerator: function(options) { return new DataGenerator(options); } });
 }(window.jQuery));
