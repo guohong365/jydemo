@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     if (!$) {
         console.log("jquery not initialized.");
     }
@@ -11,18 +11,18 @@
             rows: [],
             columns: []
         };
-        this.mergeOption = function(options) {
+        this.mergeOption = function (options) {
             $.extend(true, this.options, options);
         };
-        this.setOption = function(options) {
+        this.setOption = function (options) {
             if (options) {
                 this.options = options;
             }
         };
         this.setOption(options);
 
-        this.getCompanies = function() {
-            var names = [
+        this.getCompanies = function () {
+            let names = [
                 { name: "安宁公交" },
                 { name: "东川公交" },
                 { name: "元谋公交" },
@@ -30,45 +30,48 @@
                 { name: "景洪公交" },
                 { name: "嵩明公交" }
             ];
-            var ret = [];
-            names.forEach(function(item) {
+            let ret = [];
+            names.forEach(function (item) {
                 ret.push({ name: item });
             });
         };
-        this.getYears = function(fromYear, count) {
-            var years = [];
+        this.getYears = function (fromYear, count) {
+            let years = [];
             for (let i = 0; i < count; i++) {
-                years.push({ name: '' + fromYear - i, year: fromYear - i })
+                years.push({ name: '' + (fromYear - i), year: fromYear - i })
             }
+            return years;
         };
-        this.getMonths = function(fromMonth) {
-            var months = [
+        this.getMonths = function (fromMonth) {
+            let months = [
                 { name: "一月" }, { name: "二月" }, { name: "三月" }, { name: "四月" }, { name: "五月" }, { name: "六月" },
                 { name: "七月" }, { name: "八月" }, { name: "九月" }, { name: "十月" }, { name: "十一月" }, { name: "十二月" }
             ];
-            var ret = [];
+            let ret = [];
             for (let i = 0; i < 12; i++) {
                 var current = (fromMonth + i) % 12;
-                ret.push({ name: months[current], month: current });
+                ret.push(months[current]);
             }
             return ret;
         };
-        this.getDays = function(year, month, fromDay) {
-            var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        this.getDays = function (year, month, endDay) {
+            let monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             month = month < 0 ? 0 : (month > 11 ? 11 : month);
             if (month == 1) { //判断闰年
                 if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
                     monthDays[month] = 29;
                 }
             }
-            fromDay = fromDay < 1 ? 1 : (fromDay > monthDays[month] ? monthDays[month] : fromDay);
-            for (let i = fromDay; i >= 1; i--) {
-                item.days.push({ name: '' + i, value: i });
+            endDay = !endDay || endDay < 1 || endDay > monthDays[month] ? monthDays[month] : endDay;
+            let days = [];
+            for (let i = 1; i <= endDay; i++) {
+                days.push({ name: '' + i, value: i });
             }
+            return days;
         };
 
-        this.buildHistoryData = function() {
-            var historyOption = {
+        this.buildHistoryData = function () {
+            let historyOption = {
                 name: '',
                 min: 60,
                 max: 1200,
@@ -80,32 +83,37 @@
                 ],
                 columns: []
             };
-            var generator = $.createGenerator(historyOption);
-            var yearsData = generator.generate({
+            let generator = $.createGenerator(historyOption);
+            let years = this.getYears(2020, 10);
+            let yearsData = generator.generate({
                 name: '历年数据',
-                columns: getYears(2020, 10)
+                columns: years
             });
-            var monthsData = this.generator.generate({
+            let months = this.getMonths(0);
+            let monthsData = generator.generate({
                 name: '2020年历史数据',
-                columns: this.getMonths(0)
+                columns: months
             });
-            var daysData = generator.generate({
+
+            let days = this.getDays(2020, 12);
+            let daysData = generator.generate({
                 name: '2020年12月数据',
-                columns: this.getDays(2020, 12, 1)
+                columns: days
             });
             return [yearsData, monthsData, daysData];
         };
 
         function getColumnData(dataset) {
             let index = dataset.source[0].length - 1;
-            var rows = dataset.slice(1);
+
+            let rows = dataset.source.slice(1);
             var data = [];
-            rows.forEach(function(row) {
+            rows.forEach(function (row) {
                 data.push(row[index]);
             });
             return data;
         }
-        this.buildPieData = function(historyData, index) {
+        this.buildPieData = function (historyData, index) {
             var pieOption = {
                 name: '',
                 min: 5,
@@ -126,321 +134,42 @@
                 name: '2020年数据',
                 min: latest[index] / 10,
                 max: latest[index] / 3,
-                columns: ['2020']
+                columns: [{ name: '2020' }]
             });
             latest = getColumnData(historyData[1])
             var monthsData = generator.generate({
                 name: '2020年12月数据',
                 min: latest[index] / 10,
                 max: latest[index] / 3,
-                columns: ['2020-12']
+                columns: [{ name: '2020-12' }]
             });
             latest = getColumnData(historyData[2])
             var daysData = generator.generate({
                 name: '2020年12月-31数据',
                 min: latest[index] / 10,
                 max: latest[index] / 3,
-                columns: ['2020-12-31']
+                columns: [{ name: '2020-12-31' }]
             });
             return [yearsData, monthsData, daysData];
         };
 
-        this.buildDataSets = function() {
-            var histories = this.buildHistoryData();
-            var incomes = this.buildPieData(histories, 2);
-            var expense = this.buildPieData(histories, 3);
-
-            var datasets = [];
-            for (let i = 0; i < 3; i++) {
-                datasets.push({
-                    historiy: histories[i],
-                    income: incomes[i],
-                    expense: expense[i]
-                });
-            }
+        this.buildDataSets = function () {
+            let histories = this.buildHistoryData();
+            let incomes = this.buildPieData(histories, 2);
+            let expenses = this.buildPieData(histories, 3);
+            return {
+                histories: histories,
+                incomes: incomes,
+                expenses: expenses
+            };
         };
     }
 
 
-
-
-
-    function buildMap(dataset) {
-        var option = {
-            tooltip: {
-                trigger: 'item',
-                formatter: '{b}<br/>{c}'
-            },
-            visualMap: {
-                type: 'continuous',
-                show: false,
-                min: 0,
-                max: 120,
-                inRange: { color: ['lightskyblue', 'yellow', 'orangered'] },
-            },
-            series: [{
-                type: 'map',
-                map: '云南',
-                roam: true,
-                data: data[index],
-                itemStyle: {
-                    normal: {
-                        borderColor: '#0692a4',
-                        borderWidth: 1
-                    },
-                    emphasis: {
-                        borderColor: '#0b1c2d',
-                        borderWidth: 2
-                    }
-                },
-                label: {
-                    normal: { show: true, color: '#000' }
-                },
-                nameMap: {
-                    "五华区": "五华",
-                    "盘龙区": "盘龙",
-                    "官渡区": "官渡",
-                    "呈贡区": "呈贡",
-                    "西山区": "西山",
-                    "安宁市": "安宁",
-                    "宜良县": "宜良",
-                    "石林彝族自治县": "石林",
-                    "晋宁区": "晋宁",
-                    "嵩明县": "嵩明",
-                    "富民县": "富民",
-                    "寻甸回族彝族自治县": "寻甸",
-                    "东川区": "东川",
-                    "禄劝彝族苗族自治县": "禄劝"
-                },
-            }]
-        };
-    }
 
     var chartsOptions = {
-        chartsFactory: function(dataType) {
-            var optionFactory = function(chartType) {
-                //收入饼图
-                var factories = [
-                    function(index) {
-                        var data = [
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                        ];
-                        var option = {
-                            tooltip: { trigger: 'item', formatter: '{b}<br/> {c} ({d}%)' },
-                            series: {
-                                type: 'pie',
-                                radius: ["15%", "50%"],
-                                center: ['50%', '40%'],
-                                roseType: 'radius',
-                                label: {
-                                    fontSize: 12,
-                                    color: '#FFF',
-                                    backgroundColor: 'transparent',
-                                    boderColor: 'transparent',
-                                    shadowColor: 'transparent'
-                                },
-                                data: data[index],
-                            }
-                        };
-                        return option;
-                    },
-
-                    //人次饼图
-                    function(index) {
-                        var data = [
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ]
-                        ];
-                        var option = {
-                            tooltip: { trigger: 'item', formatter: '{b}<br/> {c} ({d}%)' },
-                            series: {
-                                type: 'pie',
-                                radius: ["15%", "50%"],
-                                center: ['50%', '40%'],
-                                roseType: 'radius',
-                                label: {
-                                    fontSize: 12,
-                                    color: '#FFF',
-                                    backgroundColor: 'transparent',
-                                    boderColor: 'transparent',
-                                    shadowColor: 'transparent'
-                                },
-                                data: data[index],
-                            }
-                        };
-                        return option;
-                    },
-                    //历史数据
-                    function(index) {
-                        var data = [
-                            [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-                            [123, 175, 112, 197, 121, 67, 98, 21, 43, 64, 76, 38, 123, 175, 112, 197, 121, 67, 98, 21, 43, 64, 76, 38, 10],
-                            [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
-                        ];
-                        var labels = [
-                            ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-                            ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"],
-                            ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-                        ];
-
-                        var option = {
-                            color: '#00f2f1',
-                            tooltip: { trigger: 'axis' },
-                            grid: { top: '5%', left: '5%', right: '5%', bottom: '5%', show: true, boderColor: '#012f4a', containLabel: true },
-                            xAxis: { type: 'category', data: labels[index], axisTick: { show: false }, axisLabel: { color: '#4c9bfd' }, axisLine: { show: false }, boundaryGap: false },
-                            yAxis: { type: 'value', axisTick: { show: false }, axisLine: { show: false }, axisLabel: { color: '#4c9bfd' }, splitLine: { lineStyle: { color: '#012f4a' } } },
-                            series: [{ data: data[index], smooth: true, type: 'line' }]
-                        };
-                        return option;
-                    },
-                    //地图数据
-                    function(index) {
-                        var data = [
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ],
-                            [
-                                { name: "安宁公交", value: 80 },
-                                { name: "东川公交", value: 90 },
-                                { name: "元谋公交", value: 110 },
-                                { name: "禄劝公交", value: 50 },
-                                { name: "景洪公交", value: 65 },
-                                { name: "嵩明公交", value: 30 },
-                            ]
-                        ];
-                        var option = {
-                            tooltip: {
-                                trigger: 'item',
-                                formatter: '{b}<br/>{c}'
-                            },
-                            visualMap: {
-                                type: 'continuous',
-                                show: false,
-                                min: 0,
-                                max: 120,
-                                inRange: { color: ['lightskyblue', 'yellow', 'orangered'] },
-                            },
-                            series: [{
-                                type: 'map',
-                                map: '云南',
-                                roam: true,
-                                data: data[index],
-                                itemStyle: {
-                                    normal: {
-                                        borderColor: '#0692a4',
-                                        borderWidth: 1
-                                    },
-                                    emphasis: {
-                                        borderColor: '#0b1c2d',
-                                        borderWidth: 2
-                                    }
-                                },
-                                label: {
-                                    normal: { show: true, color: '#000' }
-                                },
-                                nameMap: {
-                                    "五华区": "五华",
-                                    "盘龙区": "盘龙",
-                                    "官渡区": "官渡",
-                                    "呈贡区": "呈贡",
-                                    "西山区": "西山",
-                                    "安宁市": "安宁",
-                                    "宜良县": "宜良",
-                                    "石林彝族自治县": "石林",
-                                    "晋宁区": "晋宁",
-                                    "嵩明县": "嵩明",
-                                    "富民县": "富民",
-                                    "寻甸回族彝族自治县": "寻甸",
-                                    "东川区": "东川",
-                                    "禄劝彝族苗族自治县": "禄劝"
-                                },
-                            }]
-                        };
-                        return option;
-                    }
-                ];
-                return [factories[0](chartType), factories[1](chartType), factories[2](chartType), factories[3](chartType)];
-            };
-            var options = optionFactory(dataType);
-            return [{
-                    item: $("#incomePie"),
-                    option: options[0]
-                },
-                {
-                    item: $("#timesPie"),
-                    option: options[1]
-                },
-                {
-                    item: $("#historyChart"),
-                    option: options[2]
-                },
-                {
-                    item: $("#mainMap"),
-                    option: options[3]
-                }
-            ];
-        },
-
         //表格数据
-        tablesFactory: function(dataType) {
+        tablesFactory: function (dataType) {
             var data = [
                 [
                     [
@@ -541,43 +270,39 @@
             var comparers = [comparer, comparer, comparer];
             var tables = $("#page-1 tbody");
             return [{
-                    header: headers[0],
-                    table: tables.eq(0),
-                    data: data[dataType][0],
-                    comparer: comparers[0],
-                    top: tops[0],
-                    colors: colors[0]
-                },
-                {
-                    header: headers[1],
-                    table: tables.eq(1),
-                    data: data[dataType][1],
-                    comparer: comparers[1],
-                    top: tops[1],
-                    colors: colors[1]
-                },
-                {
-                    header: headers[2],
-                    table: tables.eq(2),
-                    data: data[dataType][2],
-                    comparer: comparers[2],
-                    top: tops[2],
-                    colors: colors[2]
-                },
+                header: headers[0],
+                table: tables.eq(0),
+                data: data[dataType][0],
+                comparer: comparers[0],
+                top: tops[0],
+                colors: colors[0]
+            },
+            {
+                header: headers[1],
+                table: tables.eq(1),
+                data: data[dataType][1],
+                comparer: comparers[1],
+                top: tops[1],
+                colors: colors[1]
+            },
+            {
+                header: headers[2],
+                table: tables.eq(2),
+                data: data[dataType][2],
+                comparer: comparers[2],
+                top: tops[2],
+                colors: colors[2]
+            },
             ];
         }
     };
 
-    var Overview = function(options) {
+    var Overview = function (options) {
         this._initialied = false;
-        this._chartsFactory = null;
-        if ($.isFunction(options.chartsFactory)) {
-            this._chartsFactory = options.chartsFactory;
-        } else {
-            console.error("chartFactory is not a function or null.")
-            return;
-        }
-        this._charts = new Array();
+        var builder = new DataSetBuilder();
+        this._dataSets = builder.buildDataSets();
+
+        this.charts = new Array();
         this._tables = new Array();
         if ($.isFunction(options.tablesFactory)) {
             this._tablesFactory = options.tablesFactory;
@@ -586,33 +311,39 @@
             return;
         }
         this._current = 0;
-        this._defaultComparer = function(a, b) { return b.value - a.value; };
+        this._defaultComparer = function (a, b) { return b.value - a.value; };
 
-        this.buildHistoryLine = function(datasets) {
+        this.buildHistoryLine = function (dataset) {
+            const LINE_COUNT = 4;
             let option = {
-                color: '#00f2f1',
-                tooltip: { trigger: 'axis' },
+                color: ['red', 'green', 'red', 'green'],
+                tooltip: { trigger: 'axis', textStyle: { color: 'white' } },
                 grid: { top: '5%', left: '5%', right: '5%', bottom: '5%', show: true, boderColor: '#012f4a', containLabel: true },
                 xAxis: { type: 'category', axisLabel: { color: 'white' }, axisLine: { lineStyle: { color: '#1F7EFF' } } },
-                yAxis: { type: 'value', axisLine: { show: true, lineStyle: { color: '#1F7EFF' } }, axisLabel: { color: 'white' }, splitLine: { lineStyle: { color: '#012f4a' } } },
-                dataset: datasets,
+                yAxis: [
+                    { type: 'value', axisLine: { show: true, lineStyle: { color: '#1F7EFF' } }, axisLabel: { color: 'white' }, splitLine: { lineStyle: { color: '#012f4a' } } },
+                    { type: 'value', axisLine: { show: true, lineStyle: { color: '#1F7EFF' } }, axisLabel: { color: 'white' }, splitLine: { lineStyle: { color: '#012f4a' } } }
+                ],
+                dataset: [],
                 series: []
             };
-            for (let i = 0; i < datasets.length; i++) {
+            option.dataset = dataset;
+            for (let i = 0; i < LINE_COUNT; i++) {
                 option.series.push({
                     smooth: true,
                     type: 'line',
-                    datasetIndex: i,
-                    seriseLayoutBy: 'row'
+                    yAxisIndex: i < 2 ? 0 : 1,
+                    datasetIndex: this._current,
+                    seriesLayoutBy: 'row',
                 });
-            };
+            }
             return option;
         };
-        this.buildPie = function(datasets) {
+        this.buildPie = function (dataset) {
             let option = {
-                tooltip: { trigger: 'item', formatter: '{b}<br/> {c} ({d}%)' },
-                dataset: datasets,
-                series: {
+                tooltip: { trigger: 'item', formatter: '{c}<br/> ({d}%)' },
+                dataset: dataset,
+                series: [{
                     type: 'pie',
                     radius: ["15%", "50%"],
                     center: ['50%', '40%'],
@@ -623,41 +354,167 @@
                         backgroundColor: 'transparent',
                         boderColor: 'transparent',
                         shadowColor: 'transparent',
-                        alignTo: 'labelLine',
-                        formatter: function(param) {
+                        //alignTo: 'labelLine',
+                        rich: { a: { color: 'yellow' } }, //'#1F7EFF'}},
+                        formatter: function (param) {
                             return param.name.substr(0, 2) + "\n{a|(" + param.percent.toFixed(1) + '%)}';
                         }
                     },
+                    datasetIndex: this._current,
                     encode: { itemName: 0, value: 1, tooltip: 1 }
-                }
+                }]
             };
             return option;
         };
 
-        this.init = function() {
-            if (this._initialied) return;
-
-            var items = this._chartsFactory(this._current);
-            for (let index = 0; index < items.length; index++) {
-                var thisChart = echarts.init(items[index].item[0]);
-                items[index].chart = thisChart;
-                var num = this._charts.push(items[index]);
-                window.addEventListener('resize', function() { $.Overview._charts[num - 1].chart.resize(); });
+        this.buildMap = function (datasets) {
+            let defaultItemStyle = {
+                emphasis: {
+                    label: { show: false, color: '#FFF', },
+                    itemStyle: {
+                        borderColor: "rgba(19,198,249,0.8)",
+                        borderWidth: 1,
+                        areaColor: { type: 'radial', x: 0.5, y: 0.5, r: 0.8, colorStops: [{ offset: 0, color: '#FFFFFF00' }, { offset: 1, color: "rgba(19,198,249,0.6)" }], },
+                    }
+                },
+                itemStyle: {
+                    borderColor: "rgba(19,198,249,0.45)", borderWidth: 1, color: '#FFFFFF00',
+                    areaColor: { type: 'radial', x: 0.5, y: 0.5, r: 0.8, colorStops: [{ offset: 0, color: '#FFFFFF00' }, { offset: 1, color: "rgba(19,198,249,0.15)" }], },
+                    shadowColor: "rgba(19,198,249,1)",
+                    shadowOffsetX: 0,
+                    shadowOffsetY: 0,
+                    shadowBlur: 10
+                }
+            };
+            function buildRegions(names, itemStyle) {
+                let regions = [];
+                names.forEach(function (item) {
+                    let region = { name: item.name };
+                    $.extend(true, region, itemStyle);
+                    region.emphasis.itemStyle.boderColor = "rgba(154,205,50,1)";
+                    //region.emphasis.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.8)';
+                    region.emphasis.itemStyle.areaColor.colorStops[1].color = 'rgba(154,205,50,1)';
+                    region.itemStyle.boderColor = "rgba(154,205,50,0.8)";
+                    //region.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.5)';
+                    region.itemStyle.areaColor.colorStops[1].color = 'rgba(154,205,50,0.8)';
+                    regions.push(region);
+                });
+                return regions;
             }
+            function buildData(names) {
+                var random = new RandomGenerator();
+                var data = [];
+                names.forEach(function (item) {
+                    item.value.push(parseFloat(random.next(20, 100).toFixed(2)));
+                    data.push({
+                        name: item.name,
+                        value: item.value,
+                        itemStyle: { color: "rgba(19,198,249,0.5)" },
+                        tooltip: {
+                            backgroundColor: 'rgba(255,255,255,0.5)',
+                            textStyle: { color: 'red', fontSize: 16 }
+                        }
+                    });
+                });
+                return data;
+            }
+
+            function buildScatters(names) {
+            }
+            let names = [
+                { name: "安宁公交", value: [102.485544, 24.921785] },
+                { name: "东川公交", value: [103.182, 26.08349] },
+                { name: "元谋公交", value: [101.870837, 25.703313] },
+                { name: "禄劝公交", value: [102.46905, 25.556533] },
+                { name: "景洪公交", value: [100.797947, 22.002087] },
+                { name: "嵩明公交", value: [103.038777, 25.335087] }
+            ];
+
+            var option = {
+                tooltip: { triggerOn: "mousemove", backgroundColor: "transparent", color: 'white' },
+                geo: {
+                    map: '530000-2',
+                    roam: true,
+                    silent: false,
+                    zoom: 1.5,
+                    nameMap: {
+                        "安宁市": "安宁公交",
+                        "嵩明县": "嵩明公交",
+                        "东川区": "东川公交",
+                        "禄劝彝族苗族自治县": "禄劝公交",
+                        "元谋县": "元谋公交",
+                        "景洪市": "景洪公交"
+                    },
+                    regions: buildRegions(names, defaultItemStyle)
+                },
+                series: [
+                    {
+                        type: "effectScatter",
+                        coordinateSystem: "geo",
+                        showEffectOn: "render",
+                        rippleEffect: { brushType: 'fill' },
+                        hoverAnimation: true,
+                        symbolSize: function (val) { return val[2] / 2; },
+                        encode: { value: 2 },
+                        zlevel: 1,
+                        label: {
+                            formatter: "{b}",
+                            color: "yellow",
+                            show: true
+                        },
+                        itemStyle: {
+                            color: "#FFFF000F",
+                            shadowBlur: 10,
+                            shadowColor: "#333"
+                        },
+                        data: buildData(names)
+                    },
+                ]
+            }
+            $.extend(true, option.geo, defaultItemStyle);
+            return option;
+        };
+        this.buildCharts = function () {
+            var historyChart = this.buildHistoryLine(this._dataSets.histories);
+            var icomePie = this.buildPie(this._dataSets.incomes);
+            var expensePie = this.buildPie(this._dataSets.expenses);
+            var mainMap = this.buildMap(this._dataSets.incomes);
+            var ret = [];
+            ret.push({ charElement: $("#timesPie"), option: expensePie });
+            ret.push({ charElement: $("#incomePie"), option: icomePie });
+            ret.push({ charElement: $("#historyChart"), option: historyChart });
+            ret.push({ charElement: $("#mainMap"), option: mainMap });
+            return ret;
+        };
+
+        this.init = function () {
+            if (this._initialied) return;
+            var items = this.buildCharts();
+            let _this = this;
+            items.forEach(function (item, index) {
+                let chart = echarts.init(item.charElement[0], 'shine');
+                item.chart = chart;
+                _this.charts.push(item);
+                window.addEventListener("resize", function () {
+                    $.Overview.charts[index].chart.resize();
+                });
+            });
             var tables = this._tablesFactory(this._current);
             if ($.isArray(tables)) {
                 this._tables = tables;
             }
-            $("#mainPageType a").each(function(index) {
-                $(this).click(function() {
+            $("#mainPageType a").each(function (index) {
+                $(this).click(function () {
                     $(this).parent().addClass("active").siblings().removeClass("active");
-                    $.Overview.update(index);
-                    $.Overview._current = index;
+                    var data = index == 0 ? 0 : (index == 1 ? 2 : 1);
+                    $.Overview.update(data);
+                    $.Overview._current = data;
                 });
             });
+            this._initialied = true;
         };
 
-        this.updateTables = function(dataType) {
+        this.updateTables = function (dataType) {
             if (this._current != dataType) {
                 this._current = dataType;
                 this._tables = this._tablesFactory(dataType);
@@ -684,18 +541,19 @@
             }
         };
 
-        this.updateCharts = function(dataType) {
-            if (this._current != dataType) {
-                this._current = dataType;
-                this._charts = this.chartsFactory(dataType);
-            }
-            for (let index = 0; index < this._charts.length; index++) {
-                this._charts[index].chart.setOption(this._charts[index].option);
-                this._charts[index].chart.resize();
-            }
+        this.updateCharts = function (dataType) {
+            this._current = dataType;
+            let _this = this;
+            this.charts.forEach(function (item) {
+                item.option.series.forEach(function (s) {
+                    s.datasetIndex = _this._current;
+                });
+                item.chart.setOption(item.option);
+                item.chart.resize();
+            });
         };
 
-        this.update = function(timeType) {
+        this.update = function (timeType) {
             if (!this._initialied) {
                 this.init();
             }

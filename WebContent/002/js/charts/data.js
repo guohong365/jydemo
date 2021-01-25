@@ -1,12 +1,12 @@
-(function($) {
+(function ($) {
     if (!$) {
         return;
     }
 
-    var DataGenerator = function(options) {
+    var DataGenerator = function (options) {
         this.random = new RandomGenerator();
         this.random.randomSeed(new Date().getMilliseconds())
-        this.setOption = function(options) {
+        this.setOption = function (options) {
             $.extend(true, this.options, options);
         }
 
@@ -32,20 +32,21 @@
 
         this.setOption(options);
 
-        this.generate = function(options) {
+        this.generate = function (options) {
 
             this.setOption(options);
-
             var rows = [];
-            var headerline = [this.options.name];
-            this.options.columns.forEach(function(column) {
+            let headerline = [this.options.name];
+            this.options.columns.forEach(function (column) {
                 headerline.push(column.name);
             });
             for (let i = 0; i < this.options.rows.length; i++) {
                 var row = [];
                 row.push(this.options.rows[i].name);
                 var baseline;
-                if (typeof this.options.rows[i].rowIndex === "number" && this.options.rows[i].rowIndex >= 0 && this.options.rows[i].rowIndex < this.options.rows.length) {
+                if (typeof this.options.rows[i].rowIndex === "number"
+                    && this.options.rows[i].rowIndex >= 0
+                    && this.options.rows[i].rowIndex < this.options.rows.length) {
                     baseline = this.options.rows[this.options.rows[i].rowIndex].data;
                 } else if (this.options.baseline) {
                     baseline = this.options.baseline;
@@ -53,8 +54,9 @@
                     baseline = null;
                 }
                 if (this.options.rows[i].method === 'accum' && baseline) {
-                    var accum = 0;
-                    this.options.rows[this.options.rows[i].rowIndex].forEach(function(value) {
+                    let accum = 0;
+                    this.options.rows[this.options.rows[i].rowIndex].data.forEach(function (value, dataIndex) {
+                        if (dataIndex == 0) return;
                         accum += value;
                         row.push(accum);
                     });
@@ -80,12 +82,12 @@
             }
             var source = [];
             source.push(headerline);
-            this.options.rows.forEach(function(row) {
+            this.options.rows.forEach(function (row) {
                 source.push(row.data);
             });
             return { source: source };
         };
-        this.accumulate = function(data, start, end) {
+        this.accumulate = function (data, start, end) {
             var accumulated = [];
             if (typeof start == "number") {
                 if (start > data.length) return;
@@ -104,5 +106,5 @@
 
         };
     };
-    $.extend({ createGenerator: function(options) { return new DataGenerator(options); } });
+    $.extend({ createGenerator: function (options) { return new DataGenerator(options); } });
 }(window.jQuery));

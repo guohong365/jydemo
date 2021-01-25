@@ -38,13 +38,15 @@
                                 </div>
                                 <div class="data-box">
                                     <div class="main-label">当日收入：</div>
-                                    <div class="main-number">3254534</div>
+                                    <div id="dailyIncome" class="main-number"></div>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当月收入：</span> <span class="data-number">231442</span>
+                                    <span class="data-label">当月收入：</span> <span id="monthlyIncome"
+                                        class="data-number"></span>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当年收入：</span> <span class="data-number">231442</span>
+                                    <span class="data-label">当年收入：</span> <span id="yearlyIncome"
+                                        class="data-number"></span>
                                 </div>
                                 <div id="incomePie" class="chart-float"></div>
                             </div>
@@ -83,9 +85,9 @@
                                     </div>
                                 </div>
                                 <div id="mainPageType">
-                                    <div class="left active"><a>年度</a></div>
-                                    <div class="right"><a>当日</a></div>
-                                    <div class="middle"><a>月度</a></div>
+                                    <div class="left active"><a>历年</a></div>
+                                    <div class="right"><a>当月</a></div>
+                                    <div class="middle"><a>当年</a></div>
 
                                 </div>
                                 <div class="map" id="mainMap"></div>
@@ -121,8 +123,8 @@
                                         <tbody>
                                             <tr>
                                                 <th width="15%">排名</td>
-                                                    <th width="35%">地区</td>
-                                                        <th width="50%">收入(万元)</td>
+                                                <th width="35%">地区</td>
+                                                <th width="50%">收入(万元)</td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -264,7 +266,7 @@
                 <div class="page-col" style="width: 100%;">
                     <div class="thin-border">
                         <div class="thick-border">
-                            <div id="CompareChart">
+                            <div id="CompareChart" style="color: yellowgreen;">
 
                             </div>
                         </div>
@@ -277,7 +279,29 @@
     <script src="js/shine.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-table.js"></script>
-    <script src="map/yunnan.js"></script>
+    <script src="js/charts/map.js"></script>
+    <script src="map/530000/map.js"></script>
+    <script src="map/530000/map-spec.js"></script>
+    <script src="map/530000/map-2.js"></script>
+    <!--
+    <script src="map/530100.js"></script>
+    <script src="map/530300.js"></script>
+    <script src="map/530400.js"></script>
+    <script src="map/530500.js"></script>
+    <script src="map/530600.js"></script>
+    <script src="map/530700.js"></script>
+    <script src="map/530800.js"></script>
+    <script src="map/530900.js"></script>
+    <script src="map/532300.js"></script>
+    <script src="map/532500.js"></script>
+    <script src="map/532600.js"></script>
+    <script src="map/532800.js"></script>
+    <script src="map/532900.js"></script>
+    <script src="map/533100.js"></script>
+    <script src="map/533300.js"></script>
+    <script src="map/533400.js"></script>
+    <script src="map/js/china.js"></script>
+    -->
     <script src="js/charts/random.js"></script>
     <script src="js/charts/data.js"></script>
     <script src="js/charts/overview.js"></script>
@@ -288,7 +312,7 @@
     <script type="text/javascript">
         $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
         $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
             $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
 
