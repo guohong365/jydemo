@@ -32,7 +32,7 @@
         this.random = new RandomGenerator();
         this.random.randomSeed(new Date().getMilliseconds())
 
-        this.option = new GeneratorOption();
+        this.options = new GeneratorOption();
         /*
                 this.options = {
                     name: '',
