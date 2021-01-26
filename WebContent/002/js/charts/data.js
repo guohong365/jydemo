@@ -3,36 +3,66 @@
         return;
     }
 
+    var RowOption = function (option) {
+        this.name = '';
+        this.method = 'random';
+        this.scale = 1.0;
+        this.solt = { min: 0, max: 0 },
+            this.rowIndex = null;
+        this.data = [];
+    };
+
+    var ColumnOption = function () {
+        this.name = '';
+    }
+
+    var GeneratorOption = function () {
+        this.name = '';
+        this.min = 0;
+        this.max = 100;
+        this.baseline = null;
+        this.dimention = null;
+        this.withRowName = true;
+        this.withColumnName = true;
+        this.rows = [];
+        this.columns = [];
+    };
+
     var DataGenerator = function (options) {
         this.random = new RandomGenerator();
         this.random.randomSeed(new Date().getMilliseconds())
-        this.setOption = function (options) {
-            $.extend(true, this.options, options);
-        }
 
-        this.options = {
-            name: '',
-            min: 0,
-            max: 100,
-            count: 10,
-            baseline: null,
-            rows: [{
-                name: '',
-                scale: 1.0,
-                solt: { min: 0, max: 0 },
-                method: 'random', //'accum'
-                rowIndex: null, //当 methd=‘accum’时，为引用行的下标
-                data: []
-            }],
-            columns: [{
-                name: '',
-            }]
-
-        };
-
+        this.option = new GeneratorOption();
+        /*
+                this.options = {
+                    name: '',
+                    min: 0,
+                    max: 100,
+                    count: 10,
+                    baseline: null,
+                    rows: [{
+                        name: '',
+                        scale: 1.0,
+                        solt: { min: 0, max: 0 },
+                        method: 'random', //'accum'
+                        rowIndex: null, //当 methd=‘accum’时，为引用行的下标
+                        data: []
+                    }],
+                    columns: [{
+                        name: '',
+                    }]
+        
+                };
+        */
         this.setOption(options);
+    };
 
-        this.generate = function (options) {
+    DataGenerator.prototype = {
+        constructor: DataGenerator,
+        setOption: function (options) {
+            $.extend(true, this.options, options);
+        },
+        generate: function (options) {
 
             this.setOption(options);
             var rows = [];
@@ -86,8 +116,8 @@
                 source.push(row.data);
             });
             return { source: source };
-        };
-        this.accumulate = function (data, start, end) {
+        },
+        accumulate: function (data, start, end) {
             var accumulated = [];
             if (typeof start == "number") {
                 if (start > data.length) return;
@@ -104,7 +134,8 @@
             }
             return accumulated;
 
-        };
+        }
     };
+
     $.extend({ createGenerator: function (options) { return new DataGenerator(options); } });
 }(window.jQuery));

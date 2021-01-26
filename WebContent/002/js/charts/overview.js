@@ -103,6 +103,41 @@
             return [yearsData, monthsData, daysData];
         };
 
+        this.buildOthers = function () {
+            var option = {
+                name: '',
+                min: 0,
+                max: 100,
+                rows: [
+                    { name: "安宁公交", scale: 1.0, solt: { min: 0, max: 0 } },
+                    { name: "东川公交", scale: 0.8, solt: { min: -0.12, max: 0.2 } },
+                    { name: "元谋公交", scale: 0.5, solt: { min: -0.02, max: 0.05 } },
+                    { name: "禄劝公交", scale: 0.3, solt: { min: -0.03, max: 0.05 } },
+                    { name: "景洪公交", scale: 0.4, solt: { min: -0.03, max: 0.05 } },
+                    { name: "嵩明公交", scale: 0.1, solt: { min: -0.01, max: 0.015 } }
+                ],
+                columns: ["2020"]
+            };
+
+            let generator = $.createGenerator(option);
+            let serviceTimes = [];
+            //yearly
+            serviceTimes.push(generator.generate({ name: '（万人）', min: 500, max: 1500, columns: ["2020"] }));
+            //monthly
+            serviceTimes.push(generator.generate({ name: '（人）', min: 10, max: 100, columns: ["2020"] }));
+            //daily
+            serviceTimes.push(generator.generate({ name: '（人）', min: 100, max: 100000, columns: ["2020"] }));
+
+            let memberIncrement = [];
+            //yearly
+            memberIncrement.push(generator.generate({ name: '（人）', min: 500, max: 10000, columns: ["2020"] }));
+            //monthly
+            memberIncrement.push(generator.generate({ name: '（人）', min: 0, max: 3000, columns: ["2020"] }));
+            //daily
+            memberIncrement.push(generator.generate({ name: '（人）', min: 0, max: 1000, columns: ["2020"] }));
+            return { serviceTimes: serviceTimes, memberIncrement: memberIncrement };
+        };
+
         function getColumnData(dataset) {
             let index = dataset.source[0].length - 1;
 
@@ -153,163 +188,30 @@
             return [yearsData, monthsData, daysData];
         };
 
-        this.buildDataSets = function () {
+        this.buildDataSets = function (options) {
+            this.mergeOption(options);
+
             let histories = this.buildHistoryData();
             let incomes = this.buildPieData(histories, 2);
             let expenses = this.buildPieData(histories, 3);
+            let others = this.buildOthers();
             return {
                 histories: histories,
                 incomes: incomes,
-                expenses: expenses
+                expenses: expenses,
+                serviceTimes: others.serviceTimes,
+                memberIncrement: others.memberIncrement
             };
         };
     }
 
 
-
-    var chartsOptions = {
-        //表格数据
-        tablesFactory: function (dataType) {
-            var data = [
-                [
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-
-                    ]
-                ],
-                [
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-
-                    ]
-                ],
-                [
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-                    ],
-                    [
-                        { name: "安宁公交", value: 80 },
-                        { name: "东川公交", value: 90 },
-                        { name: "元谋公交", value: 110 },
-                        { name: "禄劝公交", value: 50 },
-                        { name: "景洪公交", value: 65 },
-                        { name: "嵩明公交", value: 30 },
-                    ]
-                ]
-            ];
-            var headers = ["<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>收入(万元)</td></tr>",
-                "<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>服务人次</td></tr>",
-                "<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>会员新增</td></tr>"
-            ];
-            var colors = [
-                ["red", "orange", "coral", "cyan", "darkcyan"],
-                ["red", "orange", "coral", "cyan", "darkcyan"],
-                ["red", "orange", "coral", "cyan", "darkcyan"]
-            ];
-            var tops = [5, 5, 5];
-
-            function comparer(a, b) { return b.value - a.value; }
-            var comparers = [comparer, comparer, comparer];
-            var tables = $("#page-1 tbody");
-            return [{
-                header: headers[0],
-                table: tables.eq(0),
-                data: data[dataType][0],
-                comparer: comparers[0],
-                top: tops[0],
-                colors: colors[0]
-            },
-            {
-                header: headers[1],
-                table: tables.eq(1),
-                data: data[dataType][1],
-                comparer: comparers[1],
-                top: tops[1],
-                colors: colors[1]
-            },
-            {
-                header: headers[2],
-                table: tables.eq(2),
-                data: data[dataType][2],
-                comparer: comparers[2],
-                top: tops[2],
-                colors: colors[2]
-            },
-            ];
-        }
-    };
-
-    var Overview = function (options) {
+    var Overview = function () {
         this._initialied = false;
-        var builder = new DataSetBuilder();
+        let builder = new DataSetBuilder();
         this._dataSets = builder.buildDataSets();
-
-        this.charts = new Array();
-        this._tables = new Array();
-        if ($.isFunction(options.tablesFactory)) {
-            this._tablesFactory = options.tablesFactory;
-        } else {
-            console.error("tableDataFactory is not a function or null.")
-            return;
-        }
+        this.charts = [];
+        this._tables = [];
         this._current = 0;
         this._defaultComparer = function (a, b) { return b.value - a.value; };
 
@@ -386,41 +288,6 @@
                     shadowBlur: 10
                 }
             };
-            function buildRegions(names, itemStyle) {
-                let regions = [];
-                names.forEach(function (item) {
-                    let region = { name: item.name };
-                    $.extend(true, region, itemStyle);
-                    region.emphasis.itemStyle.boderColor = "rgba(154,205,50,1)";
-                    //region.emphasis.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.8)';
-                    region.emphasis.itemStyle.areaColor.colorStops[1].color = 'rgba(154,205,50,1)';
-                    region.itemStyle.boderColor = "rgba(154,205,50,0.8)";
-                    //region.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.5)';
-                    region.itemStyle.areaColor.colorStops[1].color = 'rgba(154,205,50,0.8)';
-                    regions.push(region);
-                });
-                return regions;
-            }
-            function buildData(names) {
-                var random = new RandomGenerator();
-                var data = [];
-                names.forEach(function (item) {
-                    item.value.push(parseFloat(random.next(20, 100).toFixed(2)));
-                    data.push({
-                        name: item.name,
-                        value: item.value,
-                        itemStyle: { color: "rgba(19,198,249,0.5)" },
-                        tooltip: {
-                            backgroundColor: 'rgba(255,255,255,0.5)',
-                            textStyle: { color: 'red', fontSize: 16 }
-                        }
-                    });
-                });
-                return data;
-            }
-
-            function buildScatters(names) {
-            }
             let names = [
                 { name: "安宁公交", value: [102.485544, 24.921785] },
                 { name: "东川公交", value: [103.182, 26.08349] },
@@ -429,8 +296,62 @@
                 { name: "景洪公交", value: [100.797947, 22.002087] },
                 { name: "嵩明公交", value: [103.038777, 25.335087] }
             ];
+            //准备regions
+            let regions = [];
+            names.forEach(function (item) {
+                let region = { name: item.name };
+                $.extend(true, region, defaultItemStyle);
+                region.emphasis.itemStyle.boderColor = "#ff0000";
+                //region.emphasis.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.8)';
+                region.emphasis.itemStyle.areaColor.colorStops[1].color = "#ff0000";
+                region.itemStyle.boderColor = "#ffd300";
+                //region.itemStyle.areaColor.colorStops[0].color = 'rgba(19,198,249,0.5)';
+                region.itemStyle.areaColor.colorStops[1].color = '#ffd300';
+                regions.push(region);
+            });
+            //准备数据
+            var random = new RandomGenerator();
+            var data = [];
+            names.forEach(function (item) {
+                item.value.push(parseFloat(random.next(20, 50).toFixed(2)));
+                data.push({
+                    name: item.name,
+                    value: item.value,
+                    itemStyle: { color: "#ff0000F0" },
+                    tooltip: { backgroundColor: 'rgba(55,55,55,0.5)', textStyle: { color: "rgba(49,198,249,1)", fontSize: 16 } }
+                });
+            });
 
-            var option = {
+            var scatters = {
+                type: "effectScatter",
+                coordinateSystem: "geo",
+                showEffectOn: "render",
+                rippleEffect: { brushType: 'fill' },
+                hoverAnimation: true,
+                symbolSize: function (val) { return val[2] / 2; },
+                encode: { value: 2 },
+                zlevel: 2,
+                label: { formatter: "{b}", color: "white", show: true, position: 'bottom' },
+                itemStyle: { color: "#FFFF000F", shadowBlur: 10, shadowColor: "#333" },
+                data: data
+            };
+
+            let lineData = [];
+
+            names.forEach(function (from) {
+                names.forEach(function (to) {
+                    lineData.push([{ coord: from.value }, { coord: to.value }]);
+                });
+            });
+
+            let lines = {
+                type: 'lines',
+                zlevel: 2,
+                effect: { show: true, period: 5, trailLength: 0.2, symbol: 'arrow', symbolSize: 6, },
+                lineStyle: { normal: { color: "rgba(49,198,249,1)", width: 1, opacity: 0.2, curveness: .3 } },
+                data: lineData
+            };
+            let option = {
                 tooltip: { triggerOn: "mousemove", backgroundColor: "transparent", color: 'white' },
                 geo: {
                     map: '530000-2',
@@ -445,31 +366,9 @@
                         "元谋县": "元谋公交",
                         "景洪市": "景洪公交"
                     },
-                    regions: buildRegions(names, defaultItemStyle)
+                    regions: regions
                 },
-                series: [
-                    {
-                        type: "effectScatter",
-                        coordinateSystem: "geo",
-                        showEffectOn: "render",
-                        rippleEffect: { brushType: 'fill' },
-                        hoverAnimation: true,
-                        symbolSize: function (val) { return val[2] / 2; },
-                        encode: { value: 2 },
-                        zlevel: 1,
-                        label: {
-                            formatter: "{b}",
-                            color: "yellow",
-                            show: true
-                        },
-                        itemStyle: {
-                            color: "#FFFF000F",
-                            shadowBlur: 10,
-                            shadowColor: "#333"
-                        },
-                        data: buildData(names)
-                    },
-                ]
+                series: [scatters, lines]
             }
             $.extend(true, option.geo, defaultItemStyle);
             return option;
@@ -486,6 +385,84 @@
             ret.push({ charElement: $("#mainMap"), option: mainMap });
             return ret;
         };
+        //表格数据
+        this.buildTables = function () {
+            let colors = [
+                ["red", "orange", "coral", "cyan", "darkcyan"],
+                ["red", "orange", "coral", "cyan", "darkcyan"],
+                ["red", "orange", "coral", "cyan", "darkcyan"]
+            ];
+            let bodys = $("#page-1 tbody");
+            const top = 6;
+            let tableCollection = [];
+            let comparer = function (a, b) { return b.value - a.value; };
+            let _this = this;
+            var dataset = null;
+            let getHeader = function (index, unit) {
+                let headers = [
+                    "<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>收入",
+                    "<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>服务人次",
+                    "<tr><th width='15%'>排名</td><th width='35%'>公司</td><th width='50%'>会员新增"
+                ];
+                let tail = "</td></tr>";
+                return headers[index] + unit + tail;
+            };
+            let buildOne = function (dataType) {
+                let tables = [];
+                for (let i = 0; i < 3; i++) {
+                    switch (i) {
+                        case 0:
+                            dataset = _this._dataSets.incomes;
+                            break;
+                        case 1:
+                            dataset = _this._dataSets.serviceTimes;
+
+                            break;
+                        case 2:
+                            dataset = _this._dataSets.memberIncrement;
+                            break;
+                    }
+                    let source = dataset[dataType].source;
+                    console.log("source:");
+                    console.log(source);
+                    let values = [];
+                    source.forEach(function (data, dataIndex) {
+                        if (dataIndex == 0) return;
+                        values.push({ name: data[0], value: data[data.length - 1] });
+                    });
+                    values = values.sort(comparer);
+                    console.log(values);
+                    let rows = getHeader(i, i == 0 ? "（万元）" : source[0][0]);
+                    let lastColor = 0;
+                    values.forEach(function (row, index) {
+                        if (index >= top) return;
+                        let color = colors[i][lastColor];
+                        rows = rows +
+                            "<tr>" +
+                            "<td>" +
+                            "<div class='order' style='background-color:" + color + ";'>" +
+                            "<div>" + (index + 1) + "</div>" +
+                            "</div>" +
+                            "</td>" +
+                            "<td>" + row.name + "</td>" +
+                            "<td>" + row.value + "</td>" +
+                            "</tr>";
+                        if (lastColor < colors[i].length - 1) lastColor++;
+                    });
+                    console.log(rows);
+                    tables.push({
+                        table: bodys.eq(i),
+                        body: rows
+                    });
+                }
+                return tables;
+            };
+            for (let i = 0; i < 3; i++) {
+                tableCollection.push(buildOne(i));
+            }
+            console.log(tableCollection);
+            return tableCollection;
+        };
 
         this.init = function () {
             if (this._initialied) return;
@@ -499,10 +476,10 @@
                     $.Overview.charts[index].chart.resize();
                 });
             });
-            var tables = this._tablesFactory(this._current);
-            if ($.isArray(tables)) {
-                this._tables = tables;
-            }
+            this._tables = this.buildTables();
+            console.log("tables");
+            console.log(this._tables);
+
             $("#mainPageType a").each(function (index) {
                 $(this).click(function () {
                     $(this).parent().addClass("active").siblings().removeClass("active");
@@ -515,30 +492,16 @@
         };
 
         this.updateTables = function (dataType) {
-            if (this._current != dataType) {
-                this._current = dataType;
-                this._tables = this._tablesFactory(dataType);
-            }
-            for (let num = 0; num < this._tables.length; num++) {
-                var table = this._tables[num];
-                if ($.isFunction(table.comparer)) {
-                    table.data.sort(table.comparer);
-                } else {
-                    table.data.sort(this._defaultComparer);
-                }
-                var lines = "";
-                var lastColor = 0;
-                for (let i = 0; i < table.data.length && i < table.top; i++) {
-                    var color = table.colors[lastColor];
-                    lines += "<tr>" +
-                        "<td><div class='order' style='background-color:" + color + ";'><div>" + (i + 1) + "</div></div></td>" +
-                        "<td>" + table.data[i].name + "</td>" +
-                        "<td>" + table.data[i].value + "</td>" +
-                        "</tr>";
-                    if (lastColor < table.colors.length - 1) lastColor++;
-                }
-                table.table.html(table.header + lines);
-            }
+            console.log("tables");
+            console.log(this._tables);
+            let tables = [];
+            this._current = dataType;
+            tables = this._tables[dataType];
+            console.log("current tables:");
+            console.log(tables);
+            tables.forEach(function (table) {
+                table.table.html(table.body);
+            });
         };
 
         this.updateCharts = function (dataType) {
@@ -567,6 +530,6 @@
         };
     };
 
-    $.extend({ Overview: new Overview(chartsOptions) });
+    $.extend({ Overview: new Overview() });
     console.log("overview loaded. ");
 }(window.jQuery));
