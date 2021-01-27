@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     if (!$) {
         console.error("jquery must be loaded before.");
         return;
@@ -33,13 +33,13 @@
 
         var accumulated = {};
         $.extend(true, accumulated, item);
-        accumulated.source.forEach(function (row, index) {
+        accumulated.source.forEach(function(row, index) {
             if (index == 0) {
                 row[0] = '月度累计收入';
                 return;
             }
             var data = generator.accumulate(row, 1);
-            data.forEach(function (value, i) {
+            data.forEach(function(value, i) {
                 row[i + 1] = value;
             });
         });
@@ -53,13 +53,13 @@
 
         accumulated = {};
         $.extend(true, accumulated, item);
-        accumulated.source.forEach(function (row, index) {
+        accumulated.source.forEach(function(row, index) {
             if (index == 0) {
                 row[0] = '月度累计支出';
                 return;
             }
             var data = generator.accumulate(row, 1);
-            data.forEach(function (value, i) {
+            data.forEach(function(value, i) {
                 row[i + 1] = value;
             });
         });
@@ -78,7 +78,7 @@
 
     function buildLines(grid, dataset, xAxis, yAxis) {
         var series = [];
-        companies.forEach(function () {
+        companies.forEach(function() {
             var line = {
                 xAxisIndex: xAxis,
                 yAxisIndex: yAxis,
@@ -98,17 +98,13 @@
             datasetIndex: dataset,
             type: 'pie',
             radius: '30%',
-            left: position.left,
-            top: position.top,
-            right: position.right,
-            bottom: position.bottom,
             label: {
                 backgroundColor: 'transparent',
                 shadowColor: 'transparent',
                 color: '#FFF',
                 alignTo: 'labelLine',
                 rich: { a: { color: 'yellow' } }, //'#1F7EFF'}},
-                formatter: function (param) {
+                formatter: function(param) {
                     return param.name.substr(0, 2) + "\n{a|(" + param.percent.toFixed(1) + '%)}';
                 }
             },
@@ -118,12 +114,12 @@
                 tooltip: 1
             }
         };
+        $.extend(true, pie, position);
         return pie;
     }
 
     function buildSeries() {
         var series = [];
-        var line = null;
         lines = buildLines(0, 0, 0, 0);
         series = series.concat(lines);
         lines = buildLines(1, 2, 1, 1);
@@ -183,7 +179,7 @@
             { left: '53.5%', top: '55%' },
         ];
 
-        subtexts.forEach(function (subtext, index) {
+        subtexts.forEach(function(subtext, index) {
             let title = {};
             $.extend(true, title, {
                 subtext: subtext,
@@ -204,7 +200,7 @@
             { left: '37%', top: '55%', right: '30%', bottom: '5%' },
         ];
         var grids = [];
-        boundaries.forEach(function (boundary) {
+        boundaries.forEach(function(boundary) {
             grids.push({
                 containLabel: true,
                 left: boundary.left,
@@ -238,18 +234,18 @@
         series: buildSeries(),
     };
 
-    var CompareView = function (options) {
+    var CompareView = function(options) {
         this._chart = null;
         this._initialized = false;
         this._options = options;
-        this.init = function () {
+        this.init = function() {
             if (this._initialized) return;
 
             this._chart = echarts.init($("#CompareChart")[0], 'shine');
-            window.addEventListener("resize", function () {
+            window.addEventListener("resize", function() {
                 $.CompareView._chart.resize();
             });
-            this._chart.on('updateAxisPointer', function (event) {
+            this._chart.on('updateAxisPointer', function(event) {
                 var xAxisInfo = event.axesInfo[0];
                 if (xAxisInfo) {
                     var dimension = xAxisInfo.value + 1;
@@ -265,7 +261,7 @@
             });
             this._initialized = true;
         };
-        this.update = function () {
+        this.update = function() {
             if (!this._initialized) {
                 this.init(compareOptions);
             }

@@ -208,13 +208,11 @@ pre {
 
 .chart-box {
     position: absolute;
-    top: 0.42rem;
+    top: 0;
     bottom: 0;
-    width: 90%;
     margin: auto;
     left: 0;
     right: 0;
-    height: auto;
 }
 
 .container-flex {
@@ -1256,7 +1254,6 @@ pre {
     top: 1.28rem;
     left: -3rem;
 }
-
 
 .set-div {
     width: 9.8rem;
