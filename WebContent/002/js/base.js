@@ -47,3 +47,40 @@ setInterval(() => {
     $('#monthlyServiceTimes').html(initServiceNumber[1].toFixed(2) + '万人');
     $('#yearlyServiceTimes').html(initServiceNumber[2].toFixed(2) + '万人');
 }, 1000);
+
+// 判断各种浏览器，找到正确的方法
+(function ($) {
+    function launchFullscreen() {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+        }
+    };
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+
+    $("#fullSwitch").on('click', function () {
+        if ($(this).hasClass('full')) {
+            exitFullscreen();
+        }
+        else {
+            launchFullscreen();
+        }
+        $(this).toggleClass('full');
+    });
+
+}(window.jQuery));

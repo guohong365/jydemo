@@ -1,13 +1,10 @@
-(function($) {
+(function ($) {
     if (!$) {
         console.error("jquery must be loaded.");
         return;
     }
-    if (!$.dataManager) {
-        console.warn("dataManager was not initialized.");
-        $.extend({ dataManager: {} });
-    }
-    let datset = [{
+
+    let datset = {
         source: [
             ["交易时间", "城市", "卡类", "交易次数", "交易金额"],
             ["2020", "安宁", "安宁八街卡", 2000.00, 2000.00],
@@ -50,25 +47,51 @@
             ["2020", "景洪", "景洪银联二维码", 95000.00, 95000.00],
             ["2020", "景洪", "景洪银联双免", 30000.00, 30000.00],
         ]
-    }];
+    };
 
-    let result = $.dataManager.sum(datset[0].source, 3, 1);
-    console.log(result);
-    datset.push({ source: result });
-
-    result = $.dataManager.sum(datset[0].source, 4, 1);
-    console.log(result);
-    datset.push({ source: result });
-
-    result = $.dataManager.sum(datset[0].source, 3, function(row) {
-        return row[2].slice(2);
+    let matrix = $.createDataSet(datset.source);
+    let result = matrix.select(function (row, index) {
+        if (row[1] === '安宁') return row;
+        return undefined;
     });
     console.log(result);
-    datset.push({ source: result });
+    console.log("=============");
 
-    $.dataManager.yearly = datset;
+    console.log("select distinct");
+    matrix.selectDistinct(function (row) {
+        return [row[1]];
+    });
 
+    console.log('getGroupKeys');
+    console.log(matrix.dimension);
+    result = matrix.getGroupKeys(matrix.dimension, [1, 2], { value: 'top: ' });
+    console.log(result);
+    console.log("==============");
+    console.log('getGroupKeys');
+    console.log(matrix.dimension);
+    result = matrix.getGroupKeys(matrix.dimension, ['城市', 2], { value: 'top: ' });
+    console.log(result);
+    console.log("==============");
+    console.log('getGroupKeys');
+    console.log(matrix.dimension);
+    result = matrix.getGroupKeys(matrix.dimension, ['城市', '卡类'], { value: 'top: ' });
+    console.log(result);
+    console.log("==============");
 
+    console.log('sum 3 by 1');
+    result = matrix.sum(3, [0, 1, 2]);
 
+    console.log(Object.create(result));
+    console.log("==============")
+    /*
+    console.log('sum 4 by 1');
+    result = matrix.sum(matrix, 4, 1);
+    console.log(matrix);
+    console.log("==============")
+    */
+    //result = matrix.sum(matrix, 3, function (row) {
+    //    return [row[1], row[2].slice(2)];
+    //});
+    //console.log(result);
 
 }(window.jQuery));

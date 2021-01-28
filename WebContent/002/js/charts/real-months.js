@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     if (!$) {
         console.error("jquery must be loaded.");
         return;
@@ -336,6 +336,9 @@
             ["202012", "景洪", "景洪银联双免", 6938, 7000],
         ]
     };
-    $.dataManager.monthly = datset;
+
+    let matrix = $.createDataSet(datset.source);
+    let result = matrix.sum(3, [0, 1]);
+    console.log(result);
 
 }(window.jQuery));

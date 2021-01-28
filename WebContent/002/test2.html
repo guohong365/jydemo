@@ -41,10 +41,12 @@
                                     <div id="dailyIncome" class="main-number"></div>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当月收入：</span> <span id="monthlyIncome" class="data-number"></span>
+                                    <span class="data-label">当月收入：</span> <span id="monthlyIncome"
+                                        class="data-number"></span>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当年收入：</span> <span id="yearlyIncome" class="data-number"></span>
+                                    <span class="data-label">当年收入：</span> <span id="yearlyIncome"
+                                        class="data-number"></span>
                                 </div>
                                 <div id="incomePie" class="chart-float"></div>
                             </div>
@@ -63,10 +65,12 @@
                                     <div id="dailyServiceTimes" class="main-number"></div>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当月人次：</span> <span id="monthlyServiceTimes" class="data-number"></span>
+                                    <span class="data-label">当月人次：</span> <span id="monthlyServiceTimes"
+                                        class="data-number"></span>
                                 </div>
                                 <div class="data-box">
-                                    <span class="data-label">当年人次：</span> <span id="yearlyServiceTimes" class="data-number"></span>
+                                    <span class="data-label">当年人次：</span> <span id="yearlyServiceTimes"
+                                        class="data-number"></span>
                                 </div>
                                 <div id="timesPie" class="chart-float"></div>
                             </div>
@@ -121,8 +125,8 @@
                                         <tbody>
                                             <tr>
                                                 <th width="15%">排名</td>
-                                                    <th width="35%">地区</td>
-                                                        <th width="50%">收入(万元)</td>
+                                                <th width="35%">地区</td>
+                                                <th width="50%">收入(万元)</td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -277,8 +281,9 @@
     <script src="map/530000/map-2.js"></script>
     <script src="js/charts/random.js"></script>
     <script src="js/charts/data.js"></script>
-    <script src="js/charts/dataManager.js"></script>
+    <script src="js/charts/Matrix.js"></script>
     <script src="js/charts/real-year.js"></script>
+    <script src="js/charts/real-months.js"></script>
     <script src="js/charts/overview.js"></script>
     <script src="js/charts/contuiesView.js"></script>
     <script src="js/charts/compareView.js"></script>
@@ -287,7 +292,7 @@
     <script type="text/javascript">
         $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
         $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px;");
             $('#page-tabs').attr("style", "height:" + ($('#page-tabs').parent().outerHeight() - 41) + "px;");
 
