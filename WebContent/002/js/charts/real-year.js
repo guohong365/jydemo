@@ -48,41 +48,24 @@
             ["2020", "景洪", "景洪银联双免", 30000.00, 30000.00],
         ]
     };
+    let yearly = $.createDataSet(datset.source);
+    let passengers = yearly.sum(3, 1, '服务次数');
+    let income = yearly.sum(4, 1, '收入');
+    let cardsParssenger = yearly.sum(3, 2, '人次按卡分布');
+    let cardsIncome = yearly.sum(4, 2, '收入按卡分布');
+    if (!$.dataSource['2020']) {
+        $.dataSource['2020'] = {};
+    }
+    $.dataSource['2020'].yearly = [
+        yearly,
+        passengers,
+        income,
+        cardsParssenger,
+        cardsIncome
+    ];
+    console.log($.dataSource);
+    console.log("yearly =============");
 
-    let matrix = $.createDataSet(datset.source);
-    let result = matrix.select(function (row, index) {
-        if (row[1] === '安宁') return row;
-        return undefined;
-    });
-    console.log(result);
-    console.log("=============");
-
-    console.log("select distinct");
-    matrix.selectDistinct(function (row) {
-        return [row[1]];
-    });
-
-    console.log('getGroupKeys');
-    console.log(matrix.dimension);
-    result = matrix.getGroupKeys(matrix.dimension, [1, 2], { value: 'top: ' });
-    console.log(result);
-    console.log("==============");
-    console.log('getGroupKeys');
-    console.log(matrix.dimension);
-    result = matrix.getGroupKeys(matrix.dimension, ['城市', 2], { value: 'top: ' });
-    console.log(result);
-    console.log("==============");
-    console.log('getGroupKeys');
-    console.log(matrix.dimension);
-    result = matrix.getGroupKeys(matrix.dimension, ['城市', '卡类'], { value: 'top: ' });
-    console.log(result);
-    console.log("==============");
-
-    console.log('sum 3 by 1');
-    result = matrix.sum(3, [0, 1, 2]);
-
-    console.log(Object.create(result));
-    console.log("==============")
     /*
     console.log('sum 4 by 1');
     result = matrix.sum(matrix, 4, 1);

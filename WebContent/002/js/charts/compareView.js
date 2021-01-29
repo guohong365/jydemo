@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     if (!$) {
         console.error("jquery must be loaded before.");
         return;
@@ -6,9 +6,32 @@
 
     function buildDataSets() {
         var baseline = [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120];
-        var months = [
-            { name: "一月" }, { name: "二月" }, { name: "三月" }, { name: "四月" }, { name: "五月" }, { name: "六月" },
-            { name: "七月" }, { name: "八月" }, { name: "九月" }, { name: "十月" }, { name: "十一月" }, { name: "十二月" }
+        var months = [{
+                name: "一月"
+            }, {
+                name: "二月"
+            }, {
+                name: "三月"
+            }, {
+                name: "四月"
+            }, {
+                name: "五月"
+            }, {
+                name: "六月"
+            },
+            {
+                name: "七月"
+            }, {
+                name: "八月"
+            }, {
+                name: "九月"
+            }, {
+                name: "十月"
+            }, {
+                name: "十一月"
+            }, {
+                name: "十二月"
+            }
         ];
         var datasets = new Array(4);
         var generator = $.createGenerator();
@@ -17,13 +40,54 @@
             min: 5,
             max: 100,
             baseline: baseline,
-            rows: [
-                { name: "安宁公交", scale: 1.0, solt: { min: 0, max: 0 } },
-                { name: "东川公交", scale: 0.8, solt: { min: -0.12, max: 0.2 } },
-                { name: "元谋公交", scale: 0.5, solt: { min: -0.02, max: 0.05 } },
-                { name: "禄劝公交", scale: 0.3, solt: { min: -0.03, max: 0.05 } },
-                { name: "景洪公交", scale: 0.4, solt: { min: -0.03, max: 0.05 } },
-                { name: "嵩明公交", scale: 0.1, solt: { min: -0.01, max: 0.015 } }
+            rows: [{
+                    name: "安宁公交",
+                    scale: 1.0,
+                    solt: {
+                        min: 0,
+                        max: 0
+                    }
+                },
+                {
+                    name: "东川公交",
+                    scale: 0.8,
+                    solt: {
+                        min: -0.12,
+                        max: 0.2
+                    }
+                },
+                {
+                    name: "元谋公交",
+                    scale: 0.5,
+                    solt: {
+                        min: -0.02,
+                        max: 0.05
+                    }
+                },
+                {
+                    name: "禄劝公交",
+                    scale: 0.3,
+                    solt: {
+                        min: -0.03,
+                        max: 0.05
+                    }
+                },
+                {
+                    name: "景洪公交",
+                    scale: 0.4,
+                    solt: {
+                        min: -0.03,
+                        max: 0.05
+                    }
+                },
+                {
+                    name: "嵩明公交",
+                    scale: 0.1,
+                    solt: {
+                        min: -0.01,
+                        max: 0.015
+                    }
+                }
             ],
             columns: months
         };
@@ -33,13 +97,13 @@
 
         var accumulated = {};
         $.extend(true, accumulated, item);
-        accumulated.source.forEach(function(row, index) {
+        accumulated.source.forEach(function (row, index) {
             if (index == 0) {
                 row[0] = '月度累计收入';
                 return;
             }
             var data = generator.accumulate(row, 1);
-            data.forEach(function(value, i) {
+            data.forEach(function (value, i) {
                 row[i + 1] = value;
             });
         });
@@ -53,13 +117,13 @@
 
         accumulated = {};
         $.extend(true, accumulated, item);
-        accumulated.source.forEach(function(row, index) {
+        accumulated.source.forEach(function (row, index) {
             if (index == 0) {
                 row[0] = '月度累计支出';
                 return;
             }
             var data = generator.accumulate(row, 1);
-            data.forEach(function(value, i) {
+            data.forEach(function (value, i) {
                 row[i + 1] = value;
             });
         });
@@ -67,18 +131,29 @@
         return datasets;
     }
 
-    var companies = [
-        { name: "安宁公交" },
-        { name: "东川公交" },
-        { name: "元谋公交" },
-        { name: "禄劝公交" },
-        { name: "景洪公交" },
-        { name: "嵩明公交" }
+    var companies = [{
+            name: "安宁公交"
+        },
+        {
+            name: "东川公交"
+        },
+        {
+            name: "元谋公交"
+        },
+        {
+            name: "禄劝公交"
+        },
+        {
+            name: "景洪公交"
+        },
+        {
+            name: "嵩明公交"
+        }
     ];
 
     function buildLines(grid, dataset, xAxis, yAxis) {
         var series = [];
-        companies.forEach(function() {
+        companies.forEach(function () {
             var line = {
                 xAxisIndex: xAxis,
                 yAxisIndex: yAxis,
@@ -103,8 +178,12 @@
                 shadowColor: 'transparent',
                 color: '#FFF',
                 alignTo: 'labelLine',
-                rich: { a: { color: 'yellow' } }, //'#1F7EFF'}},
-                formatter: function(param) {
+                rich: {
+                    a: {
+                        color: 'yellow'
+                    }
+                }, //'#1F7EFF'}},
+                formatter: function (param) {
                     return param.name.substr(0, 2) + "\n{a|(" + param.percent.toFixed(1) + '%)}';
                 }
             },
@@ -128,13 +207,33 @@
         series = series.concat(lines);
         lines = buildLines(3, 3, 3, 3);
         series = series.concat(lines);
-        var pie = buildPie(0, 0, { left: '70%', top: '0%', right: '12.5%', bottom: '50%' });
+        var pie = buildPie(0, 0, {
+            left: '70%',
+            top: '0%',
+            right: '12.5%',
+            bottom: '50%'
+        });
         series.push(pie);
-        pie = buildPie(0, 1, { left: '82.5%', top: '0%', right: '0%', bottom: '50%' });
+        pie = buildPie(0, 1, {
+            left: '82.5%',
+            top: '0%',
+            right: '0%',
+            bottom: '50%'
+        });
         series.push(pie);
-        pie = buildPie(0, 2, { left: '70%', top: '50%', right: '12.5%', bottom: '10%' });
+        pie = buildPie(0, 2, {
+            left: '70%',
+            top: '50%',
+            right: '12.5%',
+            bottom: '10%'
+        });
         series.push(pie);
-        pie = buildPie(0, 3, { left: '82.5%', top: '50%', right: '0%', bottom: '10%' });
+        pie = buildPie(0, 3, {
+            left: '82.5%',
+            top: '50%',
+            right: '0%',
+            bottom: '10%'
+        });
         series.push(pie);
         return series;
     }
@@ -146,8 +245,15 @@
                 type: "category",
                 gridIndex: i,
                 show: true,
-                axisLine: { lineStyle: { color: '#1F7EFF', width: 1 } },
-                axisLabel: { color: 'white' }
+                axisLine: {
+                    lineStyle: {
+                        color: '#1F7EFF',
+                        width: 1
+                    }
+                },
+                axisLabel: {
+                    color: 'white'
+                }
             });
         }
         return axises;
@@ -160,9 +266,21 @@
                 type: "value",
                 gridIndex: i,
                 show: true,
-                axisLine: { show: true, lineStyle: { color: '#1F7EFF', width: 1 } },
-                axisLabel: { color: 'white' },
-                splitLine: { lineStyle: { color: '#cccccc3f' } }
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#1F7EFF',
+                        width: 1
+                    }
+                },
+                axisLabel: {
+                    color: 'white'
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: '#cccccc3f'
+                    }
+                }
             });
         }
         return axises;
@@ -172,20 +290,35 @@
         var titles = [];
         let subtexts = ["收入", "累计收入", "支出", "累计支出"];
 
-        var positions = [
-            { left: '16.5%', top: '5%' },
-            { left: '53.5%', top: '5%' },
-            { left: '15.5%', top: '55%' },
-            { left: '53.5%', top: '55%' },
+        var positions = [{
+                left: '16.5%',
+                top: '5%'
+            },
+            {
+                left: '53.5%',
+                top: '5%'
+            },
+            {
+                left: '15.5%',
+                top: '55%'
+            },
+            {
+                left: '53.5%',
+                top: '55%'
+            },
         ];
 
-        subtexts.forEach(function(subtext, index) {
+        subtexts.forEach(function (subtext, index) {
             let title = {};
             $.extend(true, title, {
                 subtext: subtext,
                 textAlign: 'center',
                 textVerticalAlign: 'middle',
-                subtextStyle: { color: 'orange', fontWeight: 'bold', fontSize: 14 }
+                subtextStyle: {
+                    color: 'orange',
+                    fontWeight: 'bold',
+                    fontSize: 14
+                }
             }, positions[index]);
             titles.push(title);
         });
@@ -193,14 +326,33 @@
     }
 
     function buildGrids() {
-        var boundaries = [
-            { left: '0%', top: '5%', right: '67%', bottom: '51%' },
-            { left: '37%', top: '5%', right: '30%', bottom: '51%' },
-            { left: '0%', top: '55%', right: '67%', bottom: '5%' },
-            { left: '37%', top: '55%', right: '30%', bottom: '5%' },
+        var boundaries = [{
+                left: '0%',
+                top: '5%',
+                right: '67%',
+                bottom: '51%'
+            },
+            {
+                left: '37%',
+                top: '5%',
+                right: '30%',
+                bottom: '51%'
+            },
+            {
+                left: '0%',
+                top: '55%',
+                right: '67%',
+                bottom: '5%'
+            },
+            {
+                left: '37%',
+                top: '55%',
+                right: '30%',
+                bottom: '5%'
+            },
         ];
         var grids = [];
-        boundaries.forEach(function(boundary) {
+        boundaries.forEach(function (boundary) {
             grids.push({
                 containLabel: true,
                 left: boundary.left,
@@ -219,7 +371,9 @@
         title: buildTitles(),
         legend: {
             show: true,
-            textStyle: { color: 'yellow' }
+            textStyle: {
+                color: 'yellow'
+            }
         },
         tooltip: {
             trigger: 'axis',
@@ -234,18 +388,18 @@
         series: buildSeries(),
     };
 
-    var CompareView = function(options) {
+    var CompareView = function (options) {
         this._chart = null;
         this._initialized = false;
         this._options = options;
-        this.init = function() {
+        this.init = function () {
             if (this._initialized) return;
 
             this._chart = echarts.init($("#CompareChart")[0], 'shine');
-            window.addEventListener("resize", function() {
+            window.addEventListener("resize", function () {
                 $.CompareView._chart.resize();
             });
-            this._chart.on('updateAxisPointer', function(event) {
+            this._chart.on('updateAxisPointer', function (event) {
                 var xAxisInfo = event.axesInfo[0];
                 if (xAxisInfo) {
                     var dimension = xAxisInfo.value + 1;
@@ -261,7 +415,7 @@
             });
             this._initialized = true;
         };
-        this.update = function() {
+        this.update = function () {
             if (!this._initialized) {
                 this.init(compareOptions);
             }
@@ -273,5 +427,6 @@
         CompareView: new CompareView(compareOptions)
     });
 
+    console.info('compareview was loaded.')
 
 }(window.jQuery));

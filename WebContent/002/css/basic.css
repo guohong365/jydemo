@@ -1,0 +1,469 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: dataNumber;
+    src: url("../fonts/data_Number.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    overflow: hidden;
+    background-image: url(../img/bg.jpg);
+    color: white;
+}
+
+a {
+    text-decoration: none
+}
+
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+thead {
+    font-weight: bold;
+}
+
+th {
+    text-align: center;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-orange {
+    background-color: orange;
+}
+
+.bg-coral {
+    background-color: coral;
+}
+
+.bg-cyan {
+    background-color: cyan;
+}
+
+.bg-darkcyan {
+    background-color: darkcyan;
+}
+
+.bg-darkslategray {
+    background-color: darkslategray;
+}
+
+.clear {
+    clear: both;
+}
+
+.header {
+    width: 100%;
+    height: 60px;
+    background: url(../img/title.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.title {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.nav-bar {
+    width: 100%;
+    height: 40px;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: absolute;
+}
+
+.nav-bar ul li {
+    font-size: 1em;
+    font-weight: bold;
+    opacity: 0.8;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    text-shadow: 0 6px 8px #00225b
+}
+
+.nav-bar ul .left {
+    margin-left: 3%
+}
+
+.nav-bar ul .right {
+    margin-right: 3%
+}
+
+.nav-bar ul li:hover {
+    opacity: 1;
+}
+
+.nav-bar ul li.active {
+    border-bottom: 4px solid #4b8df8;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.bottom {
+    bottom: 0px;
+    position: absolute;
+}
+
+.top {
+    top: 0px;
+    position: absolute;
+}
+
+.block {
+    display: block;
+}
+
+.clip {
+    overflow: clip;
+}
+
+.page-tabs {
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.page-tabs>div {
+    height: 100%;
+    padding: 4px;
+}
+
+.column {
+    height: 100%;
+}
+
+
+.row {
+    width: 100%;
+}
+
+.full {
+    height: 100%;
+    width: 100%;
+}
+
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+    position: relative;
+    float: left;
+    padding: 4px;
+}
+
+.col-xs-12 {
+    width: 100%
+}
+
+.col-xs-11 {
+    width: 91.66666667%
+}
+
+.col-xs-10 {
+    width: 83.33333333%
+}
+
+.col-xs-9 {
+    width: 75%
+}
+
+.col-xs-8 {
+    width: 66.66666667%
+}
+
+.col-xs-7 {
+    width: 58.33333333%
+}
+
+.col-xs-6 {
+    width: 50%
+}
+
+.col-xs-5 {
+    width: 41.66666667%
+}
+
+.col-xs-4 {
+    width: 33.33333333%
+}
+
+.col-xs-3 {
+    width: 25%
+}
+
+.col-xs-2 {
+    width: 16.66666667%
+}
+
+.col-xs-1 {
+    width: 8.33333333%
+}
+
+.flex-box {
+    display: flex;
+}
+
+.thin-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px #0174f5 solid;
+    padding: 1px;
+    position: relative;
+}
+
+.thick-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #016ae0;
+    position: relative;
+}
+
+.sub-title-box {
+    width: 100%;
+    height: 20px;
+    background-color: rgba(17, 25, 69, 0.1);
+    border-radius: 11px 11px 0px 0px;
+}
+
+.sub-title-box+div {
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.sub-title {
+    left: auto;
+    right: auto;
+    top: 2px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    border-radius: 4px 4px 24px 24px;
+    background-color: #3566E3BC;
+    position: relative;
+}
+
+.info-box {
+    position: relative;
+    padding: 5px;
+}
+
+.info-box>.message {
+    margin: 10px;
+}
+
+.label {
+    font-size: 18px;
+}
+
+.data-message {
+    font-size: 24px;
+}
+
+.data-number {
+    font-family: dataNumber;
+    font-size: 24px;
+    color: #10a4db;
+}
+
+.big-number {
+    text-align: center;
+    font-size: 36px;
+    font-family: dataNumber;
+}
+
+.chart-box {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+.chart-box.right {
+    right: 0;
+}
+
+.chart-box.left {
+    left: 0;
+}
+
+.chart-box.bottom {
+    bottom: 0;
+}
+
+.page-tabs table {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+
+.page-tabs table th,
+.page-tabs table td {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.page-tabs table th {
+    background-color: #0174f5;
+}
+
+.rank {
+    vertical-align: middle;
+    background-color: darkslategray;
+}
+
+div.rank {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.rank-1 {
+    background-color: red;
+}
+
+.rank-2 {
+    background-color: orange;
+}
+
+.rank-3 {
+    background-color: coral;
+}
+
+.rank-4 {
+    background-color: cyan;
+}
+
+.rank-5 {
+    background-color: darkcyan;
+}
+
+.chart-background {
+    background-color: #10a4db1f;
+}
+
+
+.chart-selector {
+    position: absolute;
+    float: left;
+    padding: 15px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+
+
+.company-selector-box {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.company-selector-wrapper {
+    width: 100%;
+    height: 34px;
+    padding: 5px;
+}
+
+.company-selector {
+    text-align: center;
+    width: 100%;
+    height: max-content;
+    opacity: 0.8;
+    border-radius: 8px;
+}
+
+.company-selector:hover {
+    opacity: 1;
+    background-color: #016ae080;
+}
+
+.company-selector-wrapper.active>.company-selector {
+    background-color: #016ae0b0;
+    border: #FFF8 2px solid;
+    opacity: 1;
+}
+
+.company-selector-wrapper.active>.company-selector>div {
+    color: red;
+}
+
+.third {
+    height: 33.33%;
+}
+
+.conuty-chart-line {
+    width: 100%;
+    height: 100%;
+    background-color: #0174f53f;
+    border-radius: 5px;
+}
+
+.county-info-box {
+    width: 100%;
+    height: 100%;
+    top: 5px;
+    position: relative;
+    color: white;
+    background-color: #10a4db1f;
+    border-radius: 5px;
+}

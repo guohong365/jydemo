@@ -5,7 +5,9 @@
     }
     if (!$.dataManager) {
         console.warn("dataManager was not initialized.");
-        $.extend({ dataManager: {} });
+        $.extend({
+            dataManager: {}
+        });
     }
     let datset = {
         source: [
@@ -337,8 +339,31 @@
         ]
     };
 
-    let matrix = $.createDataSet(datset.source);
-    let result = matrix.sum(3, [0, 1]);
-    console.log(result);
+    let monthly = $.createDataSet(datset.source);
+    let passengers = monthly.sum(3, [0, 1], '服务次数');
+    let income = monthly.sum(4, [0, 1], '收入');
+    let cardsParssenger = monthly.sum(3, [0, 1], '人次按卡分布');
+    let cardsIncome = monthly.sum(3, [0, 1], '收入按卡分布');
+    if (!$.dataSource['2020']) {
+        $.dataSource['2020'] = {};
+    }
+    $.dataSource['2020'].monthly = [
+        monthly,
+        passengers,
+        income,
+        cardsParssenger,
+        cardsIncome
+    ];
+    let cities = monthly.selectDistinct(undefined, [1, 0, 1]);
+    for (let i = 0; i < cities.length; i++) {
+        $.dataSource['2020'].monthly.push(
+            datset.select(function (row) {
+                return row[1] == cities[i];
+            })
+        );
+    }
+
+    console.log($.dataSource);
+    console.log("yearly =============");
 
 }(window.jQuery));

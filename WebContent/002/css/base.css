@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @font-face {
     font-family: dataNumber;
     src: url("../fonts/data_Number.ttf");
@@ -22,7 +23,7 @@ body {
     width: 100%;
     height: 100%;
     font-size: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-image: url(../img/bg.jpg);
 }
 

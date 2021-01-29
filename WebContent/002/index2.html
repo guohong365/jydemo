@@ -1,58 +1,419 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap-table.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.js"></script>
-<title>昆明市交运集团大数据分析系统</title></title>
-<style type="text/css">
-@font-face {
-	font-family: dataNumber;
-	src: url(fonts/data_Number.ttf);
-}
 
-* {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-	html{
-	width:100%;
-	height:100%;
-}
-body {
-	width : 100%;
-	height:100%;
-	font-size: 100%;
-    overflow: auto;
-    background-image: url(img/bg.jpg); 	
-}
-.header{
-	width:100%;
-	height:60px;
-	border: 1px #FFF;
-}
-.data-body{
-	width: 100%;
-	height: 100%;
-	border: 1px #0FF solid;
-	position: absolute;
-}
-</style>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/basic.css" rel="stylesheet" type="text/css" />
+	<link href="css/id.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery.js"></script>
+	<title>昆明市交运集团大数据分析系统</title>
+	</title>
 </head>
+
 <body>
-    <div class="header">
-    </div>
-    <div class="data-body" id="data-body">
-    </div>
-    <script type="text/javascript">    
-    $('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");	
-    	window.addEventListener('resize', function(){
-    		$('#data-body').attr("style", "height:" + (window.innerHeight - 61) + "px");	
-    	});
-    </script>
+	<div class="header">
+		<div class="title">昆明市交运集团大数据分析系统</div>
+	</div>
+	<div class="nav-bar">
+		<ul>
+			<li class="left active">经营情况总览</li>
+			<li class="left">各地经营状况</li>
+			<li class="right">经营预测</li>
+			<li class="right">对比分析</li>
+		</ul>
+	</div>
+	<div class="page-tabs">
+		<div>
+			<div class="col-xs-3 column">
+				<div class="thin-border" style="height: 50%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">收入</div>
+						</div>
+						<div>
+							<div class='info-box'>
+								<div class="message"><span class="label">当日收入：</span><span
+										class="big-number block">12345</span></div>
+								<div class="message"><span class="label">当月收入：</span><span
+										class="data-number">12345</span>
+								</div>
+								<div class="message"><span class="label">当年收入：</span><span
+										class="data-number">12345</span>
+								</div>
+								<div class="message"><span class="label">累计收入：</span><span
+										class="data-number">12345</span>
+								</div>
+							</div>
+							<div class="chart-box right bottom" style="height: 60%;width: 60%;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="thin-border" style="height: 50%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">乘车人次</div>
+						</div>
+						<div>
+							<div class='info-box'>
+								<div class="message"><span class="label">当日人次：</span><span
+										class="big-number block">12345</span></div>
+								<div class="message"><span class="label">当月人次：</span><span
+										class="data-number">12345</span>
+								</div>
+								<div class="message"><span class="label">当年人次：</span><span
+										class="data-number">12345</span>
+								</div>
+								<div class="message"><span class="label">累计人次：</span><span
+										class="data-number">12345</span>
+								</div>
+							</div>
+							<div class="chart-box right bottom" style="height: 60%;width: 60%;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 column">
+				<div class="thin-border" style="height: 70%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">云南省地图</div>
+						</div>
+						<div>
+							<div class="chart-box"></div>
+						</div>
+					</div>
+				</div>
+				<div class="thin-border" style="height: 30%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">历史数据</div>
+						</div>
+						<div>
+							<div class="chart-box"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-3 column">
+				<div class="thin-border" style="height: 33.33%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">收入排名</div>
+						</div>
+						<div class="info-box" style="height: 90%;">
+							<table>
+								<thead>
+									<tr>
+										<th>排名</th>
+										<th>公司</th>
+										<th>数值</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="rank rank-1">1</div>
+										</td>
+										<td>安宁</td>
+										<td>6784001</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-2">2</div>
+										</td>
+										<td>景洪</td>
+										<td>524060</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-3">3</div>
+										</td>
+										<td>禄劝</td>
+										<td>504000</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-4">4</div>
+										</td>
+										<td>东川</td>
+										<td>135096</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-5">5</div>
+										</td>
+										<td>嵩明</td>
+										<td>9281</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-6">6</div>
+										</td>
+										<td>元谋</td>
+										<td>1104</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="thin-border" style="height: 33.33%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">乘客人次排名</div>
+						</div>
+						<div class="info-box" style="height: 90%;">
+							<table>
+								<thead>
+									<tr>
+										<th>排名</th>
+										<th>公司</th>
+										<th>数值</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="rank rank-1">1</div>
+										</td>
+										<td>安宁</td>
+										<td>6784001</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-2">2</div>
+										</td>
+										<td>景洪</td>
+										<td>524060</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-3">3</div>
+										</td>
+										<td>禄劝</td>
+										<td>504000</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-4">4</div>
+										</td>
+										<td>东川</td>
+										<td>135096</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-5">5</div>
+										</td>
+										<td>嵩明</td>
+										<td>9281</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-6">6</div>
+										</td>
+										<td>元谋</td>
+										<td>1104</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="thin-border" style="height: 33.33%;">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">新增会员排名</div>
+						</div>
+						<div class="info-box" style="height: 90%;">
+							<table>
+								<thead>
+									<tr>
+										<th>排名</th>
+										<th>公司</th>
+										<th>数值</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="rank rank-1">1</div>
+										</td>
+										<td>安宁</td>
+										<td>6784001</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-2">2</div>
+										</td>
+										<td>景洪</td>
+										<td>524060</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-3">3</div>
+										</td>
+										<td>禄劝</td>
+										<td>504000</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-4">4</div>
+										</td>
+										<td>东川</td>
+										<td>135096</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-5">5</div>
+										</td>
+										<td>嵩明</td>
+										<td>9281</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="rank rank-6">6</div>
+										</td>
+										<td>元谋</td>
+										<td>1104</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="col-xs-12 column">
+				<div class="thin-border column">
+					<div class="thick-border column">
+						<div class="sub-title-box">
+							<div class="sub-title">安宁经营情况</div>
+						</div>
+						<div>
+							<div class="col-xs-1 column">
+								<div class="company-selector-box chart-background">
+									<div class="company-selector-wrapper active">
+										<div class="company-selector">
+											<div>安宁公交</div>
+										</div>
+									</div>
+									<div class="company-selector-wrapper">
+										<div class="company-selector">
+											<div>东川公交</div>
+										</div>
+									</div>
+									<div class="company-selector-wrapper">
+										<div class="company-selector">
+											<div>元谋公交</div>
+										</div>
+									</div>
+									<div class="company-selector-wrapper">
+										<div class="company-selector">
+											<div>禄劝公交</div>
+										</div>
+									</div>
+									<div class="company-selector-wrapper">
+										<div class="company-selector">
+											<div>景洪公交</div>
+										</div>
+									</div>
+									<div class="company-selector-wrapper">
+										<div class="company-selector">
+											<div>嵩明公交</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-9 column">
+								<div class="chart-box third">
+									<div id="incomeCharts" class="conuty-chart-line"></div>
+								</div>
+								<div class="chart-box third">
+									<div id="serviceCharts" class="conuty-chart-line"></div>
+								</div>
+								<div class="chart-box third">
+									<div id="memberCharts" class="conuty-chart-line"></div>
+								</div>
+							</div>
+							<div class="col-xs-2 column">
+								<div class="company-selector-box chart-background">
+									<div class="info-box" style="margin-left: 10px; margin-right: 10px;">
+										<span class="label">运营车辆：</span>
+										<span class="data-number">128辆</span>
+									</div>
+									<div id="vechicleChart"></div>
+									<div class="info-box" style="margin-left: 10px; margin-right: 10px;">
+										<span class="label">员工:</span>
+										<span class="data-number">323人</span>
+									</div>
+									<div id="employeeChart"></div>
+									<div class="info-box" style="margin-left: 10px; margin-right: 10px;">
+										<div><span class="label">纯利润：</span>
+											<span class="data-number">423万元</span>
+										</div>
+										<div>
+											<span class="label">人均纯利：</span>
+											<span class="data-number">1.12万元</span>
+										</div>
+										<div>
+											<span class="label">人均成本：</span>
+											<span class="data-number">2.53万元</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="col-xs-12 column">
+				<div class="thin-border">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">经营预测</div>
+						</div>
+						<div>
+							<div class="chart-box"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="col-xs-12 column">
+				<div class="thin-border">
+					<div class="thick-border">
+						<div class="sub-title-box">
+							<div class="sub-title">对比分析</div>
+						</div>
+						<div>
+							<div class="chart-box"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/echarts/echarts.min.js"></script>
+	<script src="js/echarts/theme/shine.js"></script>
+	<script src="js/map/map.js"></script>
+	<script src="js/charts/random.js"></script>
+	<script src="js/charts/DataGenerator.js"></script>
+	<script src="js/charts/DataSet.js"></script>
+	<script src="js/charts/real-year.js"></script>
+	<script src="js/charts/real-months.js"></script>
+	<script src="js/charts/real-days.js"></script>
+	<script src="js/charts/real-hours.js"></script>
+	<script src="js/home-page.js"></script>
+	<script>
+
+	</script>
 </body>
+
 </html>

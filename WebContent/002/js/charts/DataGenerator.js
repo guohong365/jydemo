@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
     if (!$) {
         return;
     }
@@ -94,13 +94,13 @@
             if (!isNaN(value)) this.precision = value;
             if ($.isArray(option.rows) && option.rows.length) {
                 let _this = this;
-                option.rows.forEach(function(row) {
+                option.rows.forEach(function (row) {
                     _this.rows.push(new RowOption(row));
                 });
             }
             if ($.isArray(option.columns) && option.columns.length) {
                 let _this = this;
-                option.columns.forEach(function(column) {
+                option.columns.forEach(function (column) {
                     _this.columns.push(new ColumnOption(column));
                 });
             }
@@ -113,16 +113,16 @@
         this.options = new GeneratorOption(options);
     };
 
-    DataGenerator.prototype.setOption = function(options) {
+    DataGenerator.prototype.setOption = function (options) {
         options = new GeneratorOption(options);
         $.extend(true, this.options, options);
     };
-    DataGenerator.prototype.generate = function(options) {
+    DataGenerator.prototype.generate = function (options) {
         this.setOption(options);
         var rows = [];
         if (this.options.withColumnName) {
             let headerline = [this.options.name];
-            this.options.columns.forEach(function(column) {
+            this.options.columns.forEach(function (column) {
                 headerline.push(column.name);
             });
             rows.push(headerline);
@@ -144,7 +144,7 @@
             }
             if (this.options.rows[i].method === 'accum' && baseline) {
                 let accum = 0;
-                this.options.rows[this.options.rows[i].rowIndex].data.forEach(function(value, dataIndex) {
+                this.options.rows[this.options.rows[i].rowIndex].data.forEach(function (value, dataIndex) {
                     if (dataIndex == 0) return;
                     accum += value;
                     row.push(accum);
@@ -169,9 +169,11 @@
             rows.push(row);
             this.options.rows[i].data = row;
         }
-        return { source: rows };
+        return {
+            source: rows
+        };
     };
-    DataGenerator.prototype.accumulate = function(data, start, end, precision) {
+    DataGenerator.prototype.accumulate = function (data, start, end, precision) {
         var accumulated = [];
         if (typeof start == "number") {
             if (start > data.length) return;
@@ -192,5 +194,9 @@
 
     };
 
-    $.extend({ createGenerator: function(options) { return new DataGenerator(options); } });
+    $.extend({
+        createGenerator: function (options) {
+            return new DataGenerator(options);
+        }
+    });
 }(window.jQuery));
