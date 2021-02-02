@@ -63,18 +63,5 @@
         cardsParssenger,
         cardsIncome
     ];
-    console.log($.dataSource);
-    console.log("yearly =============");
-
-    /*
-    console.log('sum 4 by 1');
-    result = matrix.sum(matrix, 4, 1);
-    console.log(matrix);
-    console.log("==============")
-    */
-    //result = matrix.sum(matrix, 3, function (row) {
-    //    return [row[1], row[2].slice(2)];
-    //});
-    //console.log(result);
 
 }(window.jQuery));

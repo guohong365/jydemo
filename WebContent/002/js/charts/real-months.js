@@ -362,8 +362,4 @@
             })
         );
     }
-
-    console.log($.dataSource);
-    console.log("yearly =============");
-
 }(window.jQuery));
